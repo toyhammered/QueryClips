@@ -1,4 +1,5 @@
 <h1>Query: <%= @saved_query.name %></h1>
+<%= link_to "Export as CSV", query_path(@saved_query, format: :csv), class: 'btn btn-info' %>
 <%= render "error_message" if @error %>
 <%= render "form" %>
 <%= render "results_table", result: @result if @result%>

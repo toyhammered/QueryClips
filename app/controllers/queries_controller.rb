@@ -30,7 +30,11 @@ class QueriesController < ApplicationController
     @saved_query = SavedQuery.find(@query_id)
     @query = @saved_query.query
     @database_connection = @saved_query.database_connection
-    run_query
+
+    respond_to do |format|
+      format.html { run_query(:raw) }
+      format.csv { send_data run_query(:csv) }
+    end
   end
 
   private
@@ -43,8 +47,8 @@ class QueriesController < ApplicationController
     @database_connection = DatabaseConnection.find(params[:database_connection_id])
   end
 
-  def run_query
-    @result = query_db(@query, @database_connection)
+  def run_query(format)
+    @result = query_db(@query, @database_connection, format)
   rescue PG::Error => e
     @error = e
   end
