@@ -59,6 +59,10 @@ Please open an github issue to request a feature.
 
 Contributions are welcome! Use pull requests.
 
+## License
+
+Duplo is licensed under the Apache 2.0 licence. See [LICENSE](LICENSE.md) for details.
+
 ## Screenshots
 
 Creating new database connections:
@@ -74,3 +78,4 @@ Querying:
 Saving Queries:
 
 ![](https://www.dropbox.com/s/sethdo8j5to7r05/Screenshot%202016-04-02%2016.03.30.png?dl=1)
+
