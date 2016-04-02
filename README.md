@@ -47,8 +47,13 @@ In the short term, we aim to provide:
 
 In addition to our short term plans to allow simple querying and sharing, we aim to ultimately provide:
 
+- A visually pleasing query experience
 - A powerful point-and-click query editor
 - Developer-friendly visualizations
+- Comprehensive data exporting
+- Mechanism for organizing queries
 - A chat bot for quick access to your queries
 - A hosted version of Duplo for teams that don't wish to host their own instances
+- Dashboards
+- Reports by email
 
