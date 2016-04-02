@@ -1,0 +1,8 @@
+<h1>Databases</h1>
+<%= link_to "New Database", new_database_connection_path %>
+<ul>
+  <%- @connections.each do |conn| %>
+    <li><%= link_to conn.name, database_connection_path(conn) %></li>
+  <%- end %>
+</ul>
+

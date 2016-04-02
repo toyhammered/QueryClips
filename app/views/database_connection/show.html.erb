@@ -1,0 +1,26 @@
+<h1>Database:</h1>
+<h2><%= @connection.name %></h2>
+<div class="col-md-6">
+  <table class="table">
+    <tr>
+      <th>DB Name</th>
+      <td><%= @connection.dbname %></td>
+    </tr>
+    <tr>
+      <th>Host</th>
+      <td><%= @connection.host %></td>
+    </tr>
+    <tr>
+      <th>Port</th>
+      <td><%= @connection.port %></td>
+    </tr>
+    <tr>
+      <th>User</th>
+      <td><%= @connection.user %></td>
+    </tr>
+    <tr>
+      <th>Password</th>
+      <td><%= "*" * @connection.password.size %></td>
+    </tr>
+  </table>
+</div>

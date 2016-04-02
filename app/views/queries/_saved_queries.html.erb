@@ -1,0 +1,7 @@
+<ul>
+  <%- @saved_queries.each do |sq| %>
+    <li>
+      <%= link_to sq.name, query_path(sq) %>
+    </li>
+  <%- end %>
+</ul>

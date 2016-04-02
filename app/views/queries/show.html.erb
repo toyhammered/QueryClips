@@ -1,0 +1,5 @@
+<h1>Query: <%= @saved_query.name %></h1>
+<%= render "error_message" if @error %>
+<%= render "form" %>
+<%= render "results_table", result: @result if @result%>
+<%= render "debug" %>

@@ -1,0 +1,18 @@
+<form action="/queries/run" method="get">
+  <%= render "query_box" %>
+  <%- if @database_connections %>
+    <%= render "database_connection_selector" %>
+  <%- else %>
+    <input type="hidden" name="database_connection_id" value="<%= @database_connection.id %>" />
+  <%- end %>
+    
+  <div class="form-group">
+    <input type="submit" value="Run Query" class="btn btn-primary form-control" />
+  </div>
+</form>
+
+<style>
+  #query-box {
+    height: 150px;
+  }
+</style>

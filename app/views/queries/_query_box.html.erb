@@ -1,0 +1,7 @@
+<div class="form-group">
+  <%- if @query.nil? %>
+    <textarea id="query-box" name="query" placeholder="Here goes your query" class="form-control"></textarea>
+  <%- else %>
+    <textarea id="query-box" name="query" placeholder="Here goes your query" class="form-control"><%= @query %></textarea>
+  <%- end %>
+</div>
