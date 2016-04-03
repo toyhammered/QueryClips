@@ -1,7 +1,7 @@
 {
     "name": "Duplo",
     "description": "A simple, powerful, open-source data querying service",
-    "repository": "git@github.com:dpaola2/Duplo.git",
+    "repository": "https://github.com/dpaola2/Duplo",
     "scripts": {
         "postdeploy": "bundle exec rake db:migrate"
     },
