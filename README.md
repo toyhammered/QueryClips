@@ -30,6 +30,12 @@ Click this button: [![Deploy](https://www.herokucdn.com/deploy/button.svg)](http
 
 This will deploy a free heroku application with a hobby Postgresql addon.
 
+## Protecting your instance
+
+Until user accounts exist, you can protect your instance by setting two environment variables: `BASIC_AUTH_USERNAME` and `BASIC_AUTH_PASSWORD`. You can do this on heroku through the dashboard or by running:
+
+`$ heroku config:set BASIC_AUTH_USERNAME=alice BASIC_AUTH_PASSWORD=password`
+
 ## Updating
 
 If you used the Heroku deploy button to deploy Duplo, you will need to take the following steps the first time you update:
