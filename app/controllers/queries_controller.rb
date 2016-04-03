@@ -13,7 +13,7 @@ class QueriesController < ApplicationController
     load_query
     load_database_connection
     load_all_database_connections
-    run_query
+    run_query(:raw)
   end
 
   def create
