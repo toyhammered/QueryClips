@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402211323) do
+ActiveRecord::Schema.define(version: 20160403002503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20160402211323) do
 
   create_table "saved_queries", force: true do |t|
     t.string   "name"
-    t.string   "query"
+    t.text     "query"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "database_connection_id", default: 1, null: false
