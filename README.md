@@ -30,6 +30,20 @@ Click this button: [![Deploy](https://www.herokucdn.com/deploy/button.svg)](http
 
 This will deploy a free heroku application with a hobby Postgresql addon.
 
+## Updating
+
+If you used the Heroku deploy button to deploy Duplo, you will need to take the following steps the first time you update:
+
+1. Clone the repository: `git clone git@github.com:dpaola2/Duplo.git`
+2. CD into the repository: `cd Duplo`
+3. Log into your heroku dashboard and find the git URL for the heroku app that corresponds to your instance. Then, run `git remote add <heroku git url>`
+
+Then, whenever you want to update, you simply:
+
+1. `git pull origin master`
+2. `git push heroku master`
+3. `heroku run rake db:migrate`
+
 ## Dev Installation
 
 ### Requirements:
