@@ -26,15 +26,11 @@ In addition to our short term plans to allow simple querying and sharing, we aim
 
 ## Deploying to Heroku
 
-Duplo is a Rails 4.1 application, currently being developed with Ruby 2.1.0. You should be able to get Duplo running very quickly:
+Click this button: [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dpaola2/Duplo)
 
-1. Clone the repo: `git clone git@github.com:dpaola2/Duplo.git`
-2. cd into the repository: `cd Duplo`
-3. [Follow these instructions](https://devcenter.heroku.com/articles/getting-started-with-rails4#deploy-your-application-to-heroku) to get the app running on heroku.
+This will deploy a free heroku application with a hobby Postgresql addon.
 
-The only add-on required for Duplo is a Postgresql database.
-
-## Installation
+## Dev Installation
 
 ### Requirements:
 
