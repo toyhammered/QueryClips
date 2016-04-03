@@ -1,0 +1,17 @@
+{
+    "name": "Duplo",
+    "description": "A simple, powerful, open-source data querying service",
+    "repository": "git@github.com:dpaola2/Duplo.git",
+    "scripts": {
+        "postdeploy": "bundle exec rake db:migrate"
+    },
+    "image": "heroku/ruby",
+    "addons": [
+        "heroku-postgresql:hobby-dev"
+    ],
+    "buildpacks": [
+        {
+            "url": "https://github.com/heroku/heroku-buildpack-ruby"
+        }
+    ]
+}
