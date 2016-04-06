@@ -15,6 +15,11 @@
       <li role="presentation"><%= link_to "Home", root_path %></li>
       <li role="presentation"><%= link_to "Databases", database_connection_index_path %></li>
     </ul>
+    <%- if flash[:error] %>
+      <p class="bg-danger">
+        <%= flash[:error] %>
+      </p>
+    <%- end %>
     <%= yield %>
   </div>
 
