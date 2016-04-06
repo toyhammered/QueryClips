@@ -26,8 +26,7 @@ class QueriesController < ApplicationController
   end
 
   def show
-    @query_id = params[:id]
-    @saved_query = SavedQuery.find(@query_id)
+    find_query
     @query = @saved_query.query
     @database_connection = @saved_query.database_connection
 
@@ -37,10 +36,25 @@ class QueriesController < ApplicationController
     end
   end
 
+  def destroy
+    find_query
+    if @saved_query.destroy
+      redirect_to queries_path
+    else
+      flash[:error] = "Unable to delete saved query."
+      redirect_to query_path(@saved_query)
+    end
+  end
+
   private
 
   def load_query
     @query = params[:query]
+  end
+
+  def find_query
+    @query_id = params[:id]
+    @saved_query = SavedQuery.find(@query_id)
   end
 
   def load_database_connection
