@@ -39,6 +39,7 @@ class QueriesController < ApplicationController
   def destroy
     find_query
     if @saved_query.destroy
+      flash[:notice] = "Deleted saved query."
       redirect_to queries_path
     else
       flash[:error] = "Unable to delete saved query."
