@@ -25,5 +25,19 @@
     </tr>
   </table>
   <%= link_to "Delete", database_connection_path(@connection), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+
+  <h3>Saved queries associated with this database:</h3>
+  <%- if @connection.saved_queries.count < 1 %>
+    (none)
+  <%- else %>
+    <ul>
+      <%- @connection.saved_queries.each do |saved_query| %>
+        <li>
+          <%= link_to saved_query.name, query_path(saved_query) %>
+        </li> 
+      <%- end %>
+    </ul>
+  <%- end %>
+
 </div>
 
