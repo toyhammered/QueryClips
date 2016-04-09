@@ -65,7 +65,7 @@ GRANT CONNECT ON database my_database TO duplo;
 GRANT USAGE ON SCHEMA public TO duplo;
 ```
 
-### Heroku
+### Heroku Postgres
 
 If you're using Heroku's managed Postgresql service, you should [create a read-only follower](https://devcenter.heroku.com/articles/heroku-postgres-follower-databases) to your database and tell Duplo to connect to that database instead.
 
