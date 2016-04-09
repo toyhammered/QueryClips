@@ -24,19 +24,21 @@ In addition to our short term plans to allow simple querying and sharing, we aim
 - Dashboards
 - Reports by email
 
-## Deploying to Heroku
+## Running Duplo
+
+### Deploying to Heroku
 
 Click this button: [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dpaola2/Duplo)
 
 This will deploy a free heroku application with a hobby Postgresql addon.
 
-## Protecting your instance
+### Protecting your instance
 
 Until user accounts exist, you can protect your instance by setting two environment variables: `BASIC_AUTH_USERNAME` and `BASIC_AUTH_PASSWORD`. You can do this on heroku through the dashboard or by running:
 
 `$ heroku config:set BASIC_AUTH_USERNAME=alice BASIC_AUTH_PASSWORD=password`
 
-## Updating
+### Updating
 
 If you used the Heroku deploy button to deploy Duplo, you will need to take the following steps the first time you update:
 
@@ -49,6 +51,23 @@ Then, whenever you want to update, you simply:
 1. `git pull origin master`
 2. `git push heroku master`
 3. `heroku run rake db:migrate`
+
+## Usage
+
+### Database Credentials
+
+Convention suggests using read-only credentials for any database connections within Duplo, thus preventing users from accidentally or maliciously making changes to your database. If you're managing your own Postgresql, here's how you can create a new read-only database user:
+
+```
+CREATE USER duplo ENCRYPTED PASSWORD 'password';
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO duplo;
+GRANT CONNECT ON database my_database TO duplo;
+GRANT USAGE ON SCHEMA public TO duplo;
+```
+
+### Heroku
+
+If you're using Heroku's managed Postgresql service, you should [create a read-only follower](https://devcenter.heroku.com/articles/heroku-postgres-follower-databases) to your database and tell Duplo to connect to that database instead.
 
 ## Dev Installation
 
