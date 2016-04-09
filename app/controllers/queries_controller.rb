@@ -55,7 +55,7 @@ class QueriesController < ApplicationController
 
   def find_query
     @query_id = params[:id]
-    @saved_query = SavedQuery.find(@query_id)
+    @saved_query = SavedQuery.friendly.find(@query_id)
   end
 
   def load_database_connection
