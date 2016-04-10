@@ -101,7 +101,7 @@ Contributions are welcome! Use pull requests.
 
 ## License
 
-Duplo is licensed under the Apache 2.0 licence. See [LICENSE](LICENSE) for details.
+QueryClips is licensed under the Apache 2.0 licence. See [LICENSE](LICENSE) for details.
 
 ## Screenshots
 
