@@ -22,6 +22,7 @@ In addition to our short term plans to allow simple querying and sharing, we aim
 
 - A visually pleasing query experience
 - A powerful point-and-click query editor
+- Pivoting and drilling into data
 - Comprehensive data exporting
 - Mechanism for organizing queries
 - A chat bot for quick access to your queries
