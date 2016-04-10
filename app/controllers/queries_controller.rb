@@ -47,6 +47,17 @@ class QueriesController < ApplicationController
     end
   end
 
+  def update
+    find_query
+    @updated_query = params[:query]
+    if @saved_query.update_attributes!(query: @updated_query)
+      flash[:notice] = "Updated."
+    else
+      flash[:error] = "Error saving query."
+    end
+    redirect_to query_path(@saved_query)
+  end
+
   private
 
   def load_query
