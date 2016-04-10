@@ -1,0 +1,25 @@
+<div id="viz"></div>
+<div id="viz_editor">
+  {
+    chart: {
+      type: 'column'
+    },
+    title: {
+      text: '<%= @saved_query.name %>'
+    },
+    series: {}
+
+
+
+
+  }
+</div>
+<script>
+  var editor = ace.edit("viz_editor");
+  editor.getSession().setMode("ace/mode/sql");
+  editor.setOptions({
+    minLines: 10,
+    maxLines: Infinity,
+    showPrintMargin: false
+  });
+</script>
