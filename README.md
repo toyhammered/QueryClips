@@ -9,14 +9,14 @@ QueryClips is a simple, powerful, open-source data querying service.
 - Export data to CSV and JSON
 - Simple & easy self-hosting
 
-## Near-term Roadmap
+## Roadmap
 
 In the short term, we aim to provide:
 
 - Developer-friendly visualizations
 - User accounts
 
-## Long-term Roadmap
+## Starmap
 
 In addition to our short term plans to allow simple querying and sharing, we aim to ultimately provide:
 
