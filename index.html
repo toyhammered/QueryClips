@@ -33,18 +33,38 @@
 
 <p>QueryClips is a simple, powerful, open-source data querying service.</p>
 
-<h2>
-<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
+<h1>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h1>
 
-<ul>
-<li>Write queries &amp; save their results</li>
-<li>Configure multiple database connections</li>
-<li>Export data to CSV and JSON</li>
-<li>Simple &amp; easy self-hosting</li>
-</ul>
+<h3>
+<a id="write-queries--save-their-results" class="anchor" href="#write-queries--save-their-results" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Write queries &amp; save their results</h3>
 
-<h2>
-<a id="near-term-roadmap" class="anchor" href="#near-term-roadmap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Near-term Roadmap</h2>
+<p><img src="https://www.dropbox.com/s/9j8zykfhoezu6zk/Screenshot%202016-04-10%2014.30.22.png?dl=1" alt=""></p>
+
+<h3>
+<a id="configure-multiple-database-connections" class="anchor" href="#configure-multiple-database-connections" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configure multiple database connections</h3>
+
+<p><img src="https://www.dropbox.com/s/cb4arilwmyp5i68/Screenshot%202016-04-10%2014.33.58.png?dl=1" alt=""></p>
+
+<h3>
+<a id="export-data-to-csv-and-json" class="anchor" href="#export-data-to-csv-and-json" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Export data to CSV and JSON</h3>
+
+<p><img src="https://www.dropbox.com/s/iqttwtfypf28b6m/Screenshot%202016-04-10%2014.30.42.png?dl=1" alt=""></p>
+
+<p><img src="https://www.dropbox.com/s/h2lp8uavkxm9atm/Screenshot%202016-04-10%2014.31.30.png?dl=1" alt=""></p>
+
+<h3>
+<a id="visualizations-still-in-prototype-phase" class="anchor" href="#visualizations-still-in-prototype-phase" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Visualizations (still in prototype phase)</h3>
+
+<p><img src="https://www.dropbox.com/s/h5736by1pg3r536/Screenshot%202016-04-10%2014.31.12.png?dl=1" alt=""></p>
+
+<h3>
+<a id="simple--easy-self-hosting" class="anchor" href="#simple--easy-self-hosting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Simple &amp; easy self-hosting</h3>
+
+<p>(See "Deploying to Heroku" section below.)</p>
+
+<h1>
+<a id="roadmap" class="anchor" href="#roadmap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Roadmap</h1>
 
 <p>In the short term, we aim to provide:</p>
 
@@ -53,14 +73,15 @@
 <li>User accounts</li>
 </ul>
 
-<h2>
-<a id="long-term-roadmap" class="anchor" href="#long-term-roadmap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Long-term Roadmap</h2>
+<h1>
+<a id="starmap" class="anchor" href="#starmap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Starmap</h1>
 
 <p>In addition to our short term plans to allow simple querying and sharing, we aim to ultimately provide:</p>
 
 <ul>
 <li>A visually pleasing query experience</li>
 <li>A powerful point-and-click query editor</li>
+<li>Pivoting and drilling into data</li>
 <li>Comprehensive data exporting</li>
 <li>Mechanism for organizing queries</li>
 <li>A chat bot for quick access to your queries</li>
@@ -69,25 +90,25 @@
 <li>Reports by email</li>
 </ul>
 
-<h2>
-<a id="running-queryclips" class="anchor" href="#running-queryclips" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running QueryClips</h2>
+<h1>
+<a id="running-queryclips" class="anchor" href="#running-queryclips" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running QueryClips</h1>
 
-<h3>
-<a id="deploying-to-heroku" class="anchor" href="#deploying-to-heroku" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Deploying to Heroku</h3>
+<h2>
+<a id="deploying-to-heroku" class="anchor" href="#deploying-to-heroku" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Deploying to Heroku</h2>
 
 <p>Click this button: <a href="https://heroku.com/deploy?template=https://github.com/dpaola2/QueryClips"><img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy"></a></p>
 
 <p>This will deploy a free heroku application with a hobby Postgresql addon.</p>
 
-<h3>
-<a id="protecting-your-instance" class="anchor" href="#protecting-your-instance" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Protecting your instance</h3>
+<h2>
+<a id="protecting-your-instance" class="anchor" href="#protecting-your-instance" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Protecting your instance</h2>
 
 <p>Until user accounts exist, you can protect your instance by setting two environment variables: <code>BASIC_AUTH_USERNAME</code> and <code>BASIC_AUTH_PASSWORD</code>. You can do this on heroku through the dashboard or by running:</p>
 
 <p><code>$ heroku config:set BASIC_AUTH_USERNAME=alice BASIC_AUTH_PASSWORD=password</code></p>
 
-<h3>
-<a id="updating" class="anchor" href="#updating" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Updating</h3>
+<h2>
+<a id="updating" class="anchor" href="#updating" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Updating</h2>
 
 <p>If you used the Heroku deploy button to deploy Duplo, you will need to take the following steps the first time you update:</p>
 
@@ -108,11 +129,11 @@
 <li><code>heroku run rake db:migrate</code></li>
 </ol>
 
-<h2>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h1>
 
-<h3>
-<a id="database-credentials" class="anchor" href="#database-credentials" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Database Credentials</h3>
+<h2>
+<a id="database-credentials" class="anchor" href="#database-credentials" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Database Credentials</h2>
 
 <p>Convention suggests using read-only credentials for any database connections within QueryClips, thus preventing users from accidentally or maliciously making changes to your database. If you're managing your own Postgresql, here's how you can create a new read-only database user:</p>
 
@@ -122,16 +143,16 @@ GRANT CONNECT ON database my_database TO queryclips;
 GRANT USAGE ON SCHEMA public TO queryclips;
 </code></pre>
 
-<h3>
-<a id="heroku-postgres" class="anchor" href="#heroku-postgres" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Heroku Postgres</h3>
+<h2>
+<a id="heroku-postgres" class="anchor" href="#heroku-postgres" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Heroku Postgres</h2>
 
 <p>If you're using Heroku's managed Postgresql service, you should <a href="https://devcenter.heroku.com/articles/heroku-postgres-follower-databases">create a read-only follower</a> to your database and tell QueryClips to connect to that database instead.</p>
 
-<h2>
-<a id="dev-installation" class="anchor" href="#dev-installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dev Installation</h2>
+<h1>
+<a id="dev-installation" class="anchor" href="#dev-installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dev Installation</h1>
 
-<h3>
-<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements:</h3>
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements:</h2>
 
 <ul>
 <li>Rails 4.1</li>
@@ -139,8 +160,8 @@ GRANT USAGE ON SCHEMA public TO queryclips;
 <li>Postgres 9.4.4</li>
 </ul>
 
-<h3>
-<a id="instructions" class="anchor" href="#instructions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Instructions</h3>
+<h2>
+<a id="instructions" class="anchor" href="#instructions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Instructions</h2>
 
 <ol>
 <li>Clone the repo: <code>git clone git@github.com:dpaola2/QueryClips.git</code>
@@ -156,37 +177,20 @@ GRANT USAGE ON SCHEMA public TO queryclips;
 <li>Hit <code>localhost:3000</code> in your browser.</li>
 </ol>
 
-<h2>
-<a id="feature-requests" class="anchor" href="#feature-requests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Feature Requests</h2>
+<h1>
+<a id="feature-requests" class="anchor" href="#feature-requests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Feature Requests</h1>
 
 <p>Please open an github issue to request a feature.</p>
 
-<h2>
-<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
+<h1>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h1>
 
-<p>Contributions are welcome! Use pull requests.</p>
+<p>Contributions are welcome! Use pull requests. A great way to get started is to improve documentation or pick an "enhancement" issue and comment on the issue with your intention to contribute to it.</p>
 
-<h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h1>
 
 <p>QueryClips is licensed under the Apache 2.0 licence. See <a href="LICENSE">LICENSE</a> for details.</p>
-
-<h2>
-<a id="screenshots" class="anchor" href="#screenshots" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Screenshots</h2>
-
-<p>Creating new database connections:</p>
-
-<p><img src="https://www.dropbox.com/s/gwlwjddszvqh1gj/Screenshot%202016-04-02%2016.02.18.png?dl=1" alt=""></p>
-
-<p>Querying:</p>
-
-<p><img src="https://www.dropbox.com/s/3186lctawgq0u92/Screenshot%202016-04-02%2015.57.33.png?dl=1" alt=""></p>
-
-<p><img src="https://www.dropbox.com/s/18w39nonq5hkh19/Screenshot%202016-04-02%2016.03.21.png?dl=1" alt=""></p>
-
-<p>Saving Queries:</p>
-
-<p><img src="https://www.dropbox.com/s/sethdo8j5to7r05/Screenshot%202016-04-02%2016.03.30.png?dl=1" alt=""></p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/dpaola2">dpaola2</a></p>
