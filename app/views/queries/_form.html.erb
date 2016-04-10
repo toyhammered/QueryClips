@@ -1,12 +1,10 @@
-<%= form_for(@saved_query, as: :query, url: query_path(@saved_query), method: :patch) do |f| %>
-  <%= render "query_box" %>
-  <%- if @database_connections %>
-    <%= render "database_connection_selector" %>
-  <%- else %>
-    <input type="hidden" name="database_connection_id" value="<%= @database_connection.id %>" />
+<%- if @saved_query %>
+  <%= form_for(@saved_query, as: :query, url: query_path(@saved_query), method: :patch) do |f| %>
+    <%= render "form_body" %>
   <%- end %>
-    
-  <div class="form-group">
-    <input type="submit" value="Update Query" class="btn btn-primary form-control" />
-  </div>
-<% end %>
+<%- else %>
+  <form action="/queries/run" method="get">
+    <%= render "form_body" %>
+  </form>
+<%- end %>
+
