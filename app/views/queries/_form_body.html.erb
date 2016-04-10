@@ -6,5 +6,9 @@
 <%- end %>
 
 <div class="form-group">
-  <input type="submit" value="Update Query" class="btn btn-primary form-control" />
+  <%- if @saved_query %>
+    <input type="submit" value="Update Query" class="btn btn-primary form-control" />
+  <%- else %>
+    <input type="submit" value="Run Query" class="btn btn-primary form-control" />
+  <%- end %>
 </div>

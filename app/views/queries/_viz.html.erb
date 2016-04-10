@@ -1,21 +1,30 @@
-<div id="viz"></div>
-<div id="viz_editor">
-  {
-    "chart": {
-      "type": "column"
-    },
-    "title": {
-      "text": "<%= @saved_query.name %>"
-    },
-    "dataKey": "user_count"
-    
+<a class="btn btn-primary btn-xs" role="button" data-toggle="collapse" href="#viz-panel" aria-expanded="false" aria-controls="viz-panel">Show/Hide Visualizations</a>
+<div class="collapse" id="viz-panel">
+  <div id="viz"></div>
+  <p class="bg-info">
+    You can pass customized parameters into HighCharts if you like. Consult the <a href="http://api.highcharts.com/highcharts" target="_blank">HighCharts API Documentation</a> for more details.
 
+    You can control which columns from your query results are passed into the visualization by setting <code>dataKey</code> to the corresponding column name, and <code>xAxisKey</code> to the corresponding labels you'd like to apply.
+  </p>
+  <div id="viz_editor">
+{
+  "chart": {
+    "type": "column"
+  },
+  "title": {
+    "text": "<%= @saved_query.name %>"
+  },
+  "dataKey": "<%= @result.fields[0] %>",
+  "xAxisKey": "<%= @result.fields[1] %>"
+}
+  </div>
+  <button name="runViz" onClick="javascript:runViz();" class="btn btn-primary btn-sm">Visualize</button>
 
+  <a class="btn btn-primary btn-sm" role="button" data-toggle="collapse" href="#result_json" aria-expanded="false" aria-controls="result_json">Show/Hide JSON</a>
+  <code class="collapse" id="result_json"><%= @result_json %></code>
 
-  }
 </div>
-<div id="result_json"><%= @result_json %></div>
-<button name="runViz" onClick="javascript:runViz();" class="btn btn-primary btn-sm">Visualize</button>
+
 <script>
   var vizEditor = ace.edit("viz_editor");
   vizEditor.getSession().setMode("ace/mode/json");
@@ -31,11 +40,18 @@
     var seriesData = rawData.map(function(hash) {
       return parseInt(hash[vizConfig['dataKey']]);
     });
-    alert(seriesData);
+    var xAxisLabels = rawData.map(function(hash) {
+      return hash[vizConfig['xAxisKey']];
+    });
     vizConfig.series = [{
       name: 'Series',
       data: seriesData
     }];
+    vizConfig.xAxis = {
+      categories: xAxisLabels
+  
+  
+    }
     $("#viz").highcharts(vizConfig);
   };
 </script>

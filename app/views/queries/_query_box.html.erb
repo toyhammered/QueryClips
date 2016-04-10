@@ -18,6 +18,6 @@
   });
   queryEditor.getSession().setValue(textarea.val());
   queryEditor.getSession().on('change', function(){
-    textarea.val(editor.getSession().getValue());
+    textarea.val(queryEditor.getSession().getValue());
   });
 </script>
