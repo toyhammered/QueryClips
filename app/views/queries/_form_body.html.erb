@@ -1,0 +1,14 @@
+<%= render "query_box" %>
+<%- if @database_connections %>
+  <%= render "database_connection_selector" %>
+<%- else %>
+  <input type="hidden" name="database_connection_id" value="<%= @database_connection.id %>" />
+<%- end %>
+
+<div class="form-group">
+  <%- if @saved_query %>
+    <input type="submit" value="Update Query" class="btn btn-primary form-control" />
+  <%- else %>
+    <input type="submit" value="Run Query" class="btn btn-primary form-control" />
+  <%- end %>
+</div>

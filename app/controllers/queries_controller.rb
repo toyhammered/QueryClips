@@ -30,9 +30,15 @@ class QueriesController < ApplicationController
     @query = @saved_query.query
     @database_connection = @saved_query.database_connection
 
+    
     respond_to do |format|
-      format.html { run_query(:raw) }
-      format.csv { send_data run_query(:csv) }
+      format.html do
+        run_query(:raw)
+
+      end
+      format.csv do
+        send_data run_query(:csv)
+      end
     end
   end
 
@@ -75,6 +81,11 @@ class QueriesController < ApplicationController
 
   def run_query(format)
     @result = query_db(@query, @database_connection, format)
+    if format == :raw
+      @result_hash = @result.collect {|r| r.to_h }
+      @result_json = @result_hash.to_json
+    end
+    @result
   rescue PG::Error => e
     @error = e
   end

@@ -5,7 +5,9 @@
 <%= link_to "Export as CSV", query_path(@saved_query, format: :csv), class: 'btn btn-info btn-xs' %>
 <%= link_to "Delete", query_path(@saved_query), method: :delete, class: 'btn btn-danger btn-xs', data: { confirm: 'Are you sure?' } %>
 
-<%= render "results_table", result: @result if @result%>
+<%= render "viz", result: @result if @result %>
+<%= render "results_table", result: @result if @result %>
+
 <p>
   These results came from the 
   <%= link_to @saved_query.database_connection.name, database_connection_path(@saved_query.database_connection) %>

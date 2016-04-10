@@ -1,5 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/mode-sql.js"></script>
 <div class="form-group">
   <%- if @query.nil? %>
     <textarea name="query" placeholder="Here goes your query" class="form-control"></textarea>
@@ -10,16 +8,16 @@
   <%- end %>
 </div>
 <script>
-  var editor = ace.edit("query-box");
-  editor.getSession().setMode("ace/mode/sql");
+  var queryEditor = ace.edit("query-box");
+  queryEditor.getSession().setMode("ace/mode/sql");
   var textarea = $('textarea[name="query"]').hide();
-  editor.setOptions({
+  queryEditor.setOptions({
     minLines: 10,
     maxLines: Infinity,
     showPrintMargin: false
   });
-  editor.getSession().setValue(textarea.val());
-  editor.getSession().on('change', function(){
-    textarea.val(editor.getSession().getValue());
+  queryEditor.getSession().setValue(textarea.val());
+  queryEditor.getSession().on('change', function(){
+    textarea.val(queryEditor.getSession().getValue());
   });
 </script>
