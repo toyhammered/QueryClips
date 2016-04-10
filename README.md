@@ -1,14 +1,20 @@
-# Duplo
+# QueryClips
 
-Duplo is a simple, powerful, open-source data querying service.
+QueryClips is a simple, powerful, open-source data querying service.
+
+## Features
+
+- Write queries & save their results
+- Configure multiple database connections
+- Export data to CSV and JSON
+- Simple & easy self-hosting
 
 ## Near-term Roadmap
 
 In the short term, we aim to provide:
 
-- simple querying, saved queries, and export to CSV functionality
-- easy deployment instructions for small teams who wish to host their own instances
-- user accounts
+- Developer-friendly visualizations
+- User accounts
 
 ## Long-term Roadmap
 
@@ -16,19 +22,18 @@ In addition to our short term plans to allow simple querying and sharing, we aim
 
 - A visually pleasing query experience
 - A powerful point-and-click query editor
-- Developer-friendly visualizations
 - Comprehensive data exporting
 - Mechanism for organizing queries
 - A chat bot for quick access to your queries
-- A hosted version of Duplo for teams that don't wish to host their own instances
+- A hosted version of QueryClips for teams that don't wish to host their own instances
 - Dashboards
 - Reports by email
 
-## Running Duplo
+## Running QueryClips
 
 ### Deploying to Heroku
 
-Click this button: [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dpaola2/Duplo)
+Click this button: [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dpaola2/QueryClips)
 
 This will deploy a free heroku application with a hobby Postgresql addon.
 
@@ -42,7 +47,7 @@ Until user accounts exist, you can protect your instance by setting two environm
 
 If you used the Heroku deploy button to deploy Duplo, you will need to take the following steps the first time you update:
 
-1. Clone the repository: `git clone git@github.com:dpaola2/Duplo.git`
+1. Clone the repository: `git clone git@github.com:dpaola2/QueryClips.git`
 2. CD into the repository: `cd Duplo`
 3. Log into your heroku dashboard and find the git URL for the heroku app that corresponds to your instance. Then, run `git remote add <heroku git url>`
 
@@ -56,18 +61,18 @@ Then, whenever you want to update, you simply:
 
 ### Database Credentials
 
-Convention suggests using read-only credentials for any database connections within Duplo, thus preventing users from accidentally or maliciously making changes to your database. If you're managing your own Postgresql, here's how you can create a new read-only database user:
+Convention suggests using read-only credentials for any database connections within QueryClips, thus preventing users from accidentally or maliciously making changes to your database. If you're managing your own Postgresql, here's how you can create a new read-only database user:
 
 ```
-CREATE USER duplo ENCRYPTED PASSWORD 'password';
-GRANT SELECT ON ALL TABLES IN SCHEMA public TO duplo;
-GRANT CONNECT ON database my_database TO duplo;
-GRANT USAGE ON SCHEMA public TO duplo;
+CREATE USER queryclips ENCRYPTED PASSWORD 'password';
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO queryclips;
+GRANT CONNECT ON database my_database TO queryclips;
+GRANT USAGE ON SCHEMA public TO queryclips;
 ```
 
 ### Heroku Postgres
 
-If you're using Heroku's managed Postgresql service, you should [create a read-only follower](https://devcenter.heroku.com/articles/heroku-postgres-follower-databases) to your database and tell Duplo to connect to that database instead.
+If you're using Heroku's managed Postgresql service, you should [create a read-only follower](https://devcenter.heroku.com/articles/heroku-postgres-follower-databases) to your database and tell QueryClips to connect to that database instead.
 
 ## Dev Installation
 
@@ -79,8 +84,8 @@ If you're using Heroku's managed Postgresql service, you should [create a read-o
 
 ### Instructions
 
-1. Clone the repo: `git clone git@github.com:dpaola2/Duplo.git`
-2. Create your database: `createdb duplo_development`
+1. Clone the repo: `git clone git@github.com:dpaola2/QueryClips.git`
+2. Create your database: `createdb queryclips_development`
 3. Bundle install: `bundle install`
 4. Run migrations: `bin/rake db:migrate`
 5. Run the server: `foreman start`
