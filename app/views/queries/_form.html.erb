@@ -1,4 +1,4 @@
-<form action="/queries/run" method="get">
+<%= form_for(@saved_query, as: :query, url: query_path(@saved_query), method: :patch) do |f| %>
   <%= render "query_box" %>
   <%- if @database_connections %>
     <%= render "database_connection_selector" %>
@@ -7,6 +7,6 @@
   <%- end %>
     
   <div class="form-group">
-    <input type="submit" value="Run Query" class="btn btn-primary form-control" />
+    <input type="submit" value="Update Query" class="btn btn-primary form-control" />
   </div>
-</form>
+<% end %>
