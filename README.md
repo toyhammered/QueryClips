@@ -63,7 +63,7 @@ Until user accounts exist, you can protect your instance by setting two environm
 
 ## Updating
 
-If you used the Heroku deploy button to deploy Duplo, you will need to take the following steps the first time you update:
+If you used the Heroku deploy button to deploy QueryClips, you will need to take the following steps the first time you update:
 
 1. Clone the repository: `git clone git@github.com:dpaola2/QueryClips.git`
 2. CD into the repository: `cd Duplo`
