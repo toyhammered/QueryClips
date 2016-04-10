@@ -2,21 +2,38 @@
 
 QueryClips is a simple, powerful, open-source data querying service.
 
-## Features
+# Features
 
-- Write queries & save their results
-- Configure multiple database connections
-- Export data to CSV and JSON
-- Simple & easy self-hosting
+### Write queries & save their results
 
-## Roadmap
+![](https://www.dropbox.com/s/9j8zykfhoezu6zk/Screenshot%202016-04-10%2014.30.22.png?dl=1)
+
+### Configure multiple database connections
+
+![](https://www.dropbox.com/s/cb4arilwmyp5i68/Screenshot%202016-04-10%2014.33.58.png?dl=1)
+
+### Export data to CSV and JSON
+
+![](https://www.dropbox.com/s/iqttwtfypf28b6m/Screenshot%202016-04-10%2014.30.42.png?dl=1)
+
+![](https://www.dropbox.com/s/h2lp8uavkxm9atm/Screenshot%202016-04-10%2014.31.30.png?dl=1)
+
+### Visualizations (still in prototype phase)
+
+![](https://www.dropbox.com/s/h5736by1pg3r536/Screenshot%202016-04-10%2014.31.12.png?dl=1)
+
+### Simple & easy self-hosting
+
+(See "Deploying to Heroku" section below.)
+
+# Roadmap
 
 In the short term, we aim to provide:
 
 - Developer-friendly visualizations
 - User accounts
 
-## Starmap
+# Starmap
 
 In addition to our short term plans to allow simple querying and sharing, we aim to ultimately provide:
 
@@ -30,21 +47,21 @@ In addition to our short term plans to allow simple querying and sharing, we aim
 - Dashboards
 - Reports by email
 
-## Running QueryClips
+# Running QueryClips
 
-### Deploying to Heroku
+## Deploying to Heroku
 
 Click this button: [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dpaola2/QueryClips)
 
 This will deploy a free heroku application with a hobby Postgresql addon.
 
-### Protecting your instance
+## Protecting your instance
 
 Until user accounts exist, you can protect your instance by setting two environment variables: `BASIC_AUTH_USERNAME` and `BASIC_AUTH_PASSWORD`. You can do this on heroku through the dashboard or by running:
 
 `$ heroku config:set BASIC_AUTH_USERNAME=alice BASIC_AUTH_PASSWORD=password`
 
-### Updating
+## Updating
 
 If you used the Heroku deploy button to deploy Duplo, you will need to take the following steps the first time you update:
 
@@ -58,9 +75,9 @@ Then, whenever you want to update, you simply:
 2. `git push heroku master`
 3. `heroku run rake db:migrate`
 
-## Usage
+# Usage
 
-### Database Credentials
+## Database Credentials
 
 Convention suggests using read-only credentials for any database connections within QueryClips, thus preventing users from accidentally or maliciously making changes to your database. If you're managing your own Postgresql, here's how you can create a new read-only database user:
 
@@ -71,19 +88,19 @@ GRANT CONNECT ON database my_database TO queryclips;
 GRANT USAGE ON SCHEMA public TO queryclips;
 ```
 
-### Heroku Postgres
+## Heroku Postgres
 
 If you're using Heroku's managed Postgresql service, you should [create a read-only follower](https://devcenter.heroku.com/articles/heroku-postgres-follower-databases) to your database and tell QueryClips to connect to that database instead.
 
-## Dev Installation
+# Dev Installation
 
-### Requirements:
+## Requirements:
 
 - Rails 4.1
 - Ruby 2.1.0
 - Postgres 9.4.4
 
-### Instructions
+## Instructions
 
 1. Clone the repo: `git clone git@github.com:dpaola2/QueryClips.git`
 2. Create your database: `createdb queryclips_development`
@@ -92,31 +109,15 @@ If you're using Heroku's managed Postgresql service, you should [create a read-o
 5. Run the server: `foreman start`
 6. Hit `localhost:3000` in your browser.
 
-## Feature Requests
+# Feature Requests
 
 Please open an github issue to request a feature.
 
-## Contributing
+# Contributing
 
-Contributions are welcome! Use pull requests.
+Contributions are welcome! Use pull requests. A great way to get started is to improve documentation or pick an "enhancement" issue and comment on the issue with your intention to contribute to it.
 
-## License
+# License
 
 QueryClips is licensed under the Apache 2.0 licence. See [LICENSE](LICENSE) for details.
-
-## Screenshots
-
-Creating new database connections:
-
-![](https://www.dropbox.com/s/gwlwjddszvqh1gj/Screenshot%202016-04-02%2016.02.18.png?dl=1)
-
-Querying:
-
-![](https://www.dropbox.com/s/3186lctawgq0u92/Screenshot%202016-04-02%2015.57.33.png?dl=1)
-
-![](https://www.dropbox.com/s/18w39nonq5hkh19/Screenshot%202016-04-02%2016.03.21.png?dl=1)
-
-Saving Queries:
-
-![](https://www.dropbox.com/s/sethdo8j5to7r05/Screenshot%202016-04-02%2016.03.30.png?dl=1)
 
