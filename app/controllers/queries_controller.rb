@@ -31,8 +31,14 @@ class QueriesController < ApplicationController
     @database_connection = @saved_query.database_connection
 
     respond_to do |format|
-      format.html { run_query(:raw) }
-      format.csv { send_data run_query(:csv) }
+      format.html do
+        run_query(:raw)
+        @result_hash = @result.collect {|r| r.to_h }
+        @result_json = @result_hash.to_json
+      end
+      format.csv do
+        send_data run_query(:csv)
+      end
     end
   end
 

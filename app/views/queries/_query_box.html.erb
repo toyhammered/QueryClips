@@ -8,16 +8,16 @@
   <%- end %>
 </div>
 <script>
-  var editor = ace.edit("query-box");
-  editor.getSession().setMode("ace/mode/sql");
+  var queryEditor = ace.edit("query-box");
+  queryEditor.getSession().setMode("ace/mode/sql");
   var textarea = $('textarea[name="query"]').hide();
-  editor.setOptions({
+  queryEditor.setOptions({
     minLines: 10,
     maxLines: Infinity,
     showPrintMargin: false
   });
-  editor.getSession().setValue(textarea.val());
-  editor.getSession().on('change', function(){
+  queryEditor.getSession().setValue(textarea.val());
+  queryEditor.getSession().on('change', function(){
     textarea.val(editor.getSession().getValue());
   });
 </script>

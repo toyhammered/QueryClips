@@ -1,25 +1,41 @@
 <div id="viz"></div>
 <div id="viz_editor">
   {
-    chart: {
-      type: 'column'
+    "chart": {
+      "type": "column"
     },
-    title: {
-      text: '<%= @saved_query.name %>'
+    "title": {
+      "text": "<%= @saved_query.name %>"
     },
-    series: {}
-
+    "dataKey": "user_count"
+    
 
 
 
   }
 </div>
+<div id="result_json"><%= @result_json %></div>
+<button name="runViz" onClick="javascript:runViz();" class="btn btn-primary btn-sm">Visualize</button>
 <script>
-  var editor = ace.edit("viz_editor");
-  editor.getSession().setMode("ace/mode/sql");
-  editor.setOptions({
+  var vizEditor = ace.edit("viz_editor");
+  vizEditor.getSession().setMode("ace/mode/json");
+  vizEditor.setOptions({
     minLines: 10,
     maxLines: Infinity,
     showPrintMargin: false
   });
+
+  var runViz = function() {
+    var vizConfig = JSON.parse(vizEditor.getValue());
+    var rawData = JSON.parse($('#result_json').html());
+    var seriesData = rawData.map(function(hash) {
+      return parseInt(hash[vizConfig['dataKey']]);
+    });
+    alert(seriesData);
+    vizConfig.series = [{
+      name: 'Series',
+      data: seriesData
+    }];
+    $("#viz").highcharts(vizConfig);
+  };
 </script>
