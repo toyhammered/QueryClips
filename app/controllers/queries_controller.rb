@@ -34,7 +34,10 @@ class QueriesController < ApplicationController
     respond_to do |format|
       format.html do
         run_query(:raw)
-
+      end
+      format.json do
+        run_query(:raw)
+        render json: @result_json
       end
       format.csv do
         send_data run_query(:csv)
