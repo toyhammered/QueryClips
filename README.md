@@ -11,7 +11,7 @@ QueryClips is a simple, powerful, open-source data querying service.
 ### Configure multiple database connections
 
 ![](https://www.dropbox.com/s/cb4arilwmyp5i68/Screenshot%202016-04-10%2014.33.58.png?dl=1)
-
+dup
 ### Export data to CSV and JSON
 
 ![](https://www.dropbox.com/s/iqttwtfypf28b6m/Screenshot%202016-04-10%2014.30.42.png?dl=1)
@@ -66,7 +66,7 @@ Until user accounts exist, you can protect your instance by setting two environm
 If you used the Heroku deploy button to deploy QueryClips, you will need to take the following steps the first time you update:
 
 1. Clone the repository: `git clone git@github.com:dpaola2/QueryClips.git`
-2. CD into the repository: `cd Duplo`
+2. CD into the repository: `cd QueryClips`
 3. Log into your heroku dashboard and find the git URL for the heroku app that corresponds to your instance. Then, run `git remote add <heroku git url>`
 
 Then, whenever you want to update, you simply:
