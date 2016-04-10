@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Queryclips by dpaola2</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Queryclips</h1>
+        <p>A simple, powerful, open-source data querying service</p>
+
+        <p class="view"><a href="https://github.com/dpaola2/QueryClips">View the Project on GitHub <small>dpaola2/QueryClips</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/dpaola2/QueryClips/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/dpaola2/QueryClips/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/dpaola2/QueryClips">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="queryclips" class="anchor" href="#queryclips" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>QueryClips</h1>
+
+<p>QueryClips is a simple, powerful, open-source data querying service.</p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Write queries &amp; save their results</li>
+<li>Configure multiple database connections</li>
+<li>Export data to CSV and JSON</li>
+<li>Simple &amp; easy self-hosting</li>
+</ul>
+
+<h2>
+<a id="near-term-roadmap" class="anchor" href="#near-term-roadmap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Near-term Roadmap</h2>
+
+<p>In the short term, we aim to provide:</p>
+
+<ul>
+<li>Developer-friendly visualizations</li>
+<li>User accounts</li>
+</ul>
+
+<h2>
+<a id="long-term-roadmap" class="anchor" href="#long-term-roadmap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Long-term Roadmap</h2>
+
+<p>In addition to our short term plans to allow simple querying and sharing, we aim to ultimately provide:</p>
+
+<ul>
+<li>A visually pleasing query experience</li>
+<li>A powerful point-and-click query editor</li>
+<li>Comprehensive data exporting</li>
+<li>Mechanism for organizing queries</li>
+<li>A chat bot for quick access to your queries</li>
+<li>A hosted version of QueryClips for teams that don't wish to host their own instances</li>
+<li>Dashboards</li>
+<li>Reports by email</li>
+</ul>
+
+<h2>
+<a id="running-queryclips" class="anchor" href="#running-queryclips" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running QueryClips</h2>
+
+<h3>
+<a id="deploying-to-heroku" class="anchor" href="#deploying-to-heroku" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Deploying to Heroku</h3>
+
+<p>Click this button: <a href="https://heroku.com/deploy?template=https://github.com/dpaola2/QueryClips"><img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy"></a></p>
+
+<p>This will deploy a free heroku application with a hobby Postgresql addon.</p>
+
+<h3>
+<a id="protecting-your-instance" class="anchor" href="#protecting-your-instance" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Protecting your instance</h3>
+
+<p>Until user accounts exist, you can protect your instance by setting two environment variables: <code>BASIC_AUTH_USERNAME</code> and <code>BASIC_AUTH_PASSWORD</code>. You can do this on heroku through the dashboard or by running:</p>
+
+<p><code>$ heroku config:set BASIC_AUTH_USERNAME=alice BASIC_AUTH_PASSWORD=password</code></p>
+
+<h3>
+<a id="updating" class="anchor" href="#updating" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Updating</h3>
+
+<p>If you used the Heroku deploy button to deploy Duplo, you will need to take the following steps the first time you update:</p>
+
+<ol>
+<li>Clone the repository: <code>git clone git@github.com:dpaola2/QueryClips.git</code>
+</li>
+<li>CD into the repository: <code>cd Duplo</code>
+</li>
+<li>Log into your heroku dashboard and find the git URL for the heroku app that corresponds to your instance. Then, run <code>git remote add &lt;heroku git url&gt;</code>
+</li>
+</ol>
+
+<p>Then, whenever you want to update, you simply:</p>
+
+<ol>
+<li><code>git pull origin master</code></li>
+<li><code>git push heroku master</code></li>
+<li><code>heroku run rake db:migrate</code></li>
+</ol>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="database-credentials" class="anchor" href="#database-credentials" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Database Credentials</h3>
+
+<p>Convention suggests using read-only credentials for any database connections within QueryClips, thus preventing users from accidentally or maliciously making changes to your database. If you're managing your own Postgresql, here's how you can create a new read-only database user:</p>
+
+<pre><code>CREATE USER queryclips ENCRYPTED PASSWORD 'password';
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO queryclips;
+GRANT CONNECT ON database my_database TO queryclips;
+GRANT USAGE ON SCHEMA public TO queryclips;
+</code></pre>
+
+<h3>
+<a id="heroku-postgres" class="anchor" href="#heroku-postgres" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Heroku Postgres</h3>
+
+<p>If you're using Heroku's managed Postgresql service, you should <a href="https://devcenter.heroku.com/articles/heroku-postgres-follower-databases">create a read-only follower</a> to your database and tell QueryClips to connect to that database instead.</p>
+
+<h2>
+<a id="dev-installation" class="anchor" href="#dev-installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dev Installation</h2>
+
+<h3>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements:</h3>
+
+<ul>
+<li>Rails 4.1</li>
+<li>Ruby 2.1.0</li>
+<li>Postgres 9.4.4</li>
+</ul>
+
+<h3>
+<a id="instructions" class="anchor" href="#instructions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Instructions</h3>
+
+<ol>
+<li>Clone the repo: <code>git clone git@github.com:dpaola2/QueryClips.git</code>
+</li>
+<li>Create your database: <code>createdb queryclips_development</code>
+</li>
+<li>Bundle install: <code>bundle install</code>
+</li>
+<li>Run migrations: <code>bin/rake db:migrate</code>
+</li>
+<li>Run the server: <code>foreman start</code>
+</li>
+<li>Hit <code>localhost:3000</code> in your browser.</li>
+</ol>
+
+<h2>
+<a id="feature-requests" class="anchor" href="#feature-requests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Feature Requests</h2>
+
+<p>Please open an github issue to request a feature.</p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Contributions are welcome! Use pull requests.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>Duplo is licensed under the Apache 2.0 licence. See <a href="LICENSE">LICENSE</a> for details.</p>
+
+<h2>
+<a id="screenshots" class="anchor" href="#screenshots" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Screenshots</h2>
+
+<p>Creating new database connections:</p>
+
+<p><img src="https://www.dropbox.com/s/gwlwjddszvqh1gj/Screenshot%202016-04-02%2016.02.18.png?dl=1" alt=""></p>
+
+<p>Querying:</p>
+
+<p><img src="https://www.dropbox.com/s/3186lctawgq0u92/Screenshot%202016-04-02%2015.57.33.png?dl=1" alt=""></p>
+
+<p><img src="https://www.dropbox.com/s/18w39nonq5hkh19/Screenshot%202016-04-02%2016.03.21.png?dl=1" alt=""></p>
+
+<p>Saving Queries:</p>
+
+<p><img src="https://www.dropbox.com/s/sethdo8j5to7r05/Screenshot%202016-04-02%2016.03.30.png?dl=1" alt=""></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/dpaola2">dpaola2</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
