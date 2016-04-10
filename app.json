@@ -1,7 +1,7 @@
 {
-    "name": "Duplo",
+    "name": "QueryClips",
     "description": "A simple, powerful, open-source data querying service",
-    "repository": "https://github.com/dpaola2/Duplo",
+    "repository": "https://github.com/dpaola2/QueryClips",
     "scripts": {
         "postdeploy": "bundle exec rake db:migrate"
     },
