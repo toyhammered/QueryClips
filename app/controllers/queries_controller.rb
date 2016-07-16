@@ -83,10 +83,16 @@ class QueriesController < ApplicationController
   end
 
   def run_query(format)
-    @result = query_db(@query, @database_connection, format)
+    result_obj = QueryRunner.run_query(
+      format: format,
+      query: @query,
+      database_connection: @database_connection
+    )
+
+    @result = result_obj[:result]
     if format == :raw
-      @result_hash = @result.collect {|r| r.to_h }
-      @result_json = @result_hash.to_json
+      @result_hash = result_obj[:hash]
+      @result_json = result_obj[:json]
     end
     @result
   rescue PG::Error => e
