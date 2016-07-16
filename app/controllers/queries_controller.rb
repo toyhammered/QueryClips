@@ -1,6 +1,4 @@
 class QueriesController < ApplicationController
-  include QueriesHelper
-
   def index
     @saved_queries = SavedQuery.all
     load_all_database_connections
@@ -13,7 +11,7 @@ class QueriesController < ApplicationController
     load_query
     load_database_connection
     load_all_database_connections
-    run_query(:raw)
+    run_query(format: :html)
   end
 
   def create
@@ -29,18 +27,18 @@ class QueriesController < ApplicationController
     find_query
     @query = @saved_query.query
     @database_connection = @saved_query.database_connection
-
     
     respond_to do |format|
       format.html do
-        run_query(:raw)
+        run_query(format: :html)
       end
       format.json do
-        run_query(:raw)
+        run_query(format: :json)
         render json: @result_json
       end
       format.csv do
-        send_data run_query(:csv)
+        run_query(format: :csv)
+        send_data @result_csv
       end
     end
   end
@@ -82,12 +80,28 @@ class QueriesController < ApplicationController
     @database_connection = DatabaseConnection.find(params[:database_connection_id])
   end
 
-  def run_query(format)
-    @result = query_db(@query, @database_connection, format)
-    if format == :raw
-      @result_hash = @result.collect {|r| r.to_h }
-      @result_json = @result_hash.to_json
+  def run_query(options = {})
+    format = options[:format]
+    raise "No format specified" if format.nil?
+
+    query_runner = QueryRunner.new(
+      query: @query,
+      database_connection: @database_connection
+    )
+
+    case format
+    when :html
+      result_obj = query_runner.run(:raw)
+      @result = result_obj[:raw]
+      @result_json = result_obj[:json]
+    when :csv
+      result_obj = query_runner.run(:csv)
+      @result_csv = result_obj[:csv]
+    when :json
+      result_obj = query_runner.run(:json)
+      @result_json = result_obj[:json]
     end
+
     @result
   rescue PG::Error => e
     @error = e
