@@ -11,7 +11,7 @@ class QueriesController < ApplicationController
     load_query
     load_database_connection
     load_all_database_connections
-    run_query(format: :raw)
+    run_query(format: :html)
   end
 
   def create
@@ -30,7 +30,7 @@ class QueriesController < ApplicationController
     
     respond_to do |format|
       format.html do
-        run_query(format: :raw) # uses @result
+        run_query(format: :html)
       end
       format.json do
         run_query(format: :json)
@@ -84,19 +84,21 @@ class QueriesController < ApplicationController
     format = options[:format]
     raise "No format specified" if format.nil?
 
-    result_obj = QueryRunner.run_query(
-      format: format,
+    query_runner = QueryRunner.new(
       query: @query,
       database_connection: @database_connection
     )
 
     case format
-    when :raw
+    when :html
+      result_obj = query_runner.run(:raw)
       @result = result_obj[:raw]
-      @result_json = result_obj[:json] # used for visualization
+      @result_json = result_obj[:json]
     when :csv
+      result_obj = query_runner.run(:csv)
       @result_csv = result_obj[:csv]
     when :json
+      result_obj = query_runner.run(:json)
       @result_json = result_obj[:json]
     end
 

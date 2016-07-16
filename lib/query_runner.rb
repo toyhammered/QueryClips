@@ -1,47 +1,63 @@
 class QueryRunner
-  def self.run_query(options = {})
-    format = options[:format]
-    database_connection = options[:database_connection]
-    query = options[:query]
+  def initialize(options = {})
+    @database_connection = options[:database_connection]
+    @query = options[:query]
 
-    result = query_db(query, database_connection, format)
+    raise "No database connection specified." if @database_connection.nil?
+    raise "No query specified." if @query.nil?
+  end
+
+  def run(format)
+    result = query_with_format(format)
+
     return_value = {}
-    if format == :csv
-      return_value[:csv] = result
-    else
-      result_hash = result.collect { |r| r.to_h }
+    case format
+    when :raw, :json
       return_value[:raw] = result
-      return_value[:json] = result_hash.to_json
+      return_value[:json] = result.collect { |r| r.to_h }.to_json
+    when :csv
+      return_value[:csv] = result
     end
     return_value
   end
 
   private
+  
+  def query_with_format(format)
+    conn = connection_from_database_connection(@database_connection)
 
-  def self.query_db(query, database_connection, format)
-    conn = PG.connect(
+    result = nil
+
+    case format
+    when :raw, :json
+      result = conn.exec(@query)
+    when :csv
+      result = csv_query(conn, @query)
+    end
+    
+    raise "Result was nil. Check your format: #{format}" if result.nil?
+    result
+  end
+
+  def csv_query(conn, query)
+    query = query.gsub(/;/,"")
+    data = []
+    conn.copy_data("COPY (#{query}) TO STDOUT WITH (FORMAT CSV, HEADER TRUE, FORCE_QUOTE *, ESCAPE E'\\\\');") do
+      while row = conn.get_copy_data
+        data.push(row)
+      end
+    end
+    data = data.join("\n")
+    data
+  end
+
+  def connection_from_database_connection(database_connection)
+    PG.connect(
       user: database_connection.user,
       password: database_connection.password,
       dbname: database_connection.dbname,
       host: database_connection.host,
       port: database_connection.port
     )
-
-    case format
-    when :raw
-      conn.exec(query)
-    when :json
-      conn.exec(query)
-    when :csv
-      query = query.gsub(/;/,"")
-      data = []
-      conn.copy_data("COPY (#{query}) TO STDOUT WITH (FORMAT CSV, HEADER TRUE, FORCE_QUOTE *, ESCAPE E'\\\\');") do
-        while row = conn.get_copy_data
-          data.push(row)
-        end
-      end
-      data = data.join("\n")
-      data
-    end
   end
 end
