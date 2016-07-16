@@ -5,12 +5,14 @@ class QueryRunner
     query = options[:query]
 
     result = query_db(query, database_connection, format)
-    result_hash = result.collect { |r| r.to_h }
-    return_value = {
-      result: result,
-      hash: result_hash,
-      json: result_hash.to_json
-    }
+    return_value = {}
+    if format == :csv
+      return_value[:csv] = result
+    else
+      result_hash = result.collect { |r| r.to_h }
+      return_value[:raw] = result
+      return_value[:json] = result_hash.to_json
+    end
     return_value
   end
 
@@ -27,6 +29,8 @@ class QueryRunner
 
     case format
     when :raw
+      conn.exec(query)
+    when :json
       conn.exec(query)
     when :csv
       query = query.gsub(/;/,"")
