@@ -1,6 +1,4 @@
 class QueriesController < ApplicationController
-  include QueriesHelper
-
   def index
     @saved_queries = SavedQuery.all
     load_all_database_connections
@@ -13,7 +11,7 @@ class QueriesController < ApplicationController
     load_query
     load_database_connection
     load_all_database_connections
-    run_query(:raw)
+    run_query
   end
 
   def create
@@ -33,10 +31,10 @@ class QueriesController < ApplicationController
     
     respond_to do |format|
       format.html do
-        run_query(:raw)
+        run_query
       end
       format.json do
-        run_query(:raw)
+        run_query
         render json: @result_json
       end
       format.csv do
@@ -82,7 +80,7 @@ class QueriesController < ApplicationController
     @database_connection = DatabaseConnection.find(params[:database_connection_id])
   end
 
-  def run_query(format)
+  def run_query
     result_obj = QueryRunner.run_query(
       format: format,
       query: @query,
@@ -90,10 +88,8 @@ class QueriesController < ApplicationController
     )
 
     @result = result_obj[:result]
-    if format == :raw
-      @result_hash = result_obj[:hash]
-      @result_json = result_obj[:json]
-    end
+    @result_hash = result_obj[:hash]
+    @result_json = result_obj[:json]
     @result
   rescue PG::Error => e
     @error = e
