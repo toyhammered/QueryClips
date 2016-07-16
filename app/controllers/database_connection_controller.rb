@@ -9,6 +9,7 @@ class DatabaseConnectionController < ApplicationController
 
   def create
     name = params[:name]
+    dialect = params[:dialect]
     dbname = params[:dbname]
     host = params[:host]
     port = params[:port]
@@ -16,6 +17,7 @@ class DatabaseConnectionController < ApplicationController
     password = params[:password]
     conn = DatabaseConnection.create!(
       name: name,
+      dialect: dialect,
       dbname: dbname,
       host: host,
       port: port,

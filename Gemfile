@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails_12factor'
 gem 'rails', '4.1.12'
 gem 'pg'
+gem 'mysql2'
 gem 'puma'
 gem 'friendly_id'
 # Use SCSS for stylesheets

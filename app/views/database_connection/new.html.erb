@@ -1,11 +1,17 @@
 <h1>New Database</h1>
-<p>Note: Currently only supports Postgresql databases</p>
 <div class="col-md-4">
   <form action="/database_connection" method="POST">
     <div class="form-group form-inline">
       <label>Connection Name</label>
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
       <input type="text" name="name" placeholder="My Connection" class="form-control" />
+    </div>
+    <div class="form-group form-inline">
+      <label>Connection Dialect</label>
+      <select type="select" name="dialect" class="form-control">
+        <option>PostgreSQL</option>
+        <option>MySQL</option>
+      </select>
     </div>
     <div class="form-group form-inline">
       <label>Database Name</label>
