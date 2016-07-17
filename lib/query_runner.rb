@@ -8,22 +8,20 @@ class QueryRunner
 
     case @database_connection.dialect
     when 'PostgreSQL'
-      @runner = PostgresqlDialect.new(
-        database_connection: @database_connection,
-        query: @query
-      )
+      dialect = PostgresqlDialect
     when 'MySQL'
-      @runner = MysqlDialect.new(
-        database_connection: @database_connection,
-        query: @query
-      )
+      dialect = MysqlDialect
     else
       raise "Invalid dialect: #{@database_connection.dialect}"
     end
+
+    @runner = dialect.new(
+      database_connection: @database_connection,
+      query: @query
+    )
   end
 
   def run(format)
     @runner.run(format)
   end
-
 end
