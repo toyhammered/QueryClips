@@ -23,5 +23,9 @@ class QueryRunner
 
   def run(format)
     @runner.run(format)
+  rescue Mysql2::Error => e
+    raise QueryException.new(e)
+  rescue PG::Error => e
+    raise QueryException.new(e)
   end
 end

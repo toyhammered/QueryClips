@@ -1,0 +1,2 @@
+class QueryException < Exception
+end

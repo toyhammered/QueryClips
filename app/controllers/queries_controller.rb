@@ -100,7 +100,7 @@ class QueriesController < ApplicationController
     end
 
     @result
-  rescue PG::Error => e
+  rescue QueryException => e
     @error = e
   end
 
