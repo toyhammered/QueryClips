@@ -24,22 +24,52 @@ class QueryRunner
   private
   
   def query_with_format(format)
-    conn = connection_from_database_connection(@database_connection)
-
     result = nil
 
     case format
     when :raw, :json
-      result = conn.exec(@query)
+      result = normal_query(@query)
     when :csv
-      result = csv_query(conn, @query)
+      result = csv_query(@query)
     end
     
     raise "Result was nil. Check your format: #{format}" if result.nil?
     result
   end
 
+  def normal_query(query)
+    case @database_connection.dialect
+    when 'PostgreSQL'
+      conn = PG.connect(
+        user: @database_connection.user,
+        password: @database_connection.password,
+        dbname: @database_connection.dbname,
+        host: @database_connection.host,
+        port: @database_connection.port
+      )
+      conn.exec(query)
+    when 'MySQL'
+      client = Mysql2::Client.new(
+        username: @database_connection.user,
+        password: @database_connection.password,
+        database: @database_connection.dbname,
+        host: @database_connection.host,
+        port: @database_connection.port
+      )
+      client.query(query)
+    else
+      raise "Invalid dialect: #{@database_connection.dialect}"
+    end
+  end
+
   def csv_query(conn, query)
+    conn = PG.connect(
+      user: @database_connection.user,
+      password: @database_connection.password,
+      dbname: @database_connection.dbname,
+      host: @database_connection.host,
+      port: @database_connection.port
+    )
     query = query.gsub(/;/,"")
     data = []
     conn.copy_data("COPY (#{query}) TO STDOUT WITH (FORMAT CSV, HEADER TRUE, FORCE_QUOTE *, ESCAPE E'\\\\');") do
@@ -49,15 +79,5 @@ class QueryRunner
     end
     data = data.join("\n")
     data
-  end
-
-  def connection_from_database_connection(database_connection)
-    PG.connect(
-      user: database_connection.user,
-      password: database_connection.password,
-      dbname: database_connection.dbname,
-      host: database_connection.host,
-      port: database_connection.port
-    )
   end
 end
