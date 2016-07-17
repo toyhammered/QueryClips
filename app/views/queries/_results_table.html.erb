@@ -1,11 +1,11 @@
 <h3>Results</h3>
 <table class="table">
   <tr>
-    <%- @result.fields.each do |field| %>
+    <%- @result[:fields].each do |field| %>
       <th><%= field %></th>
     <%- end %>
   </tr>
-  <%- @result.each_row do |row| %>
+  <%- @result[:rows].each do |row| %>
     <tr>
       <%- row.each do |col| %>
         <td><%= col %></td>

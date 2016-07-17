@@ -38,3 +38,4 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem "better_errors", group: [:development]
 gem "binding_of_caller", group: [:development]
+gem "pry", group: [:development]

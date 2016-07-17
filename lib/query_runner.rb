@@ -14,7 +14,7 @@ class QueryRunner
     case format
     when :raw, :json
       return_value[:raw] = result
-      return_value[:json] = result.collect { |r| r.to_h }.to_json
+      return_value[:json] = result.to_json
     when :csv
       return_value[:csv] = result
     end
@@ -47,7 +47,7 @@ class QueryRunner
         host: @database_connection.host,
         port: @database_connection.port
       )
-      conn.exec(query)
+      pg_results(conn.exec(query))
     when 'MySQL'
       client = Mysql2::Client.new(
         username: @database_connection.user,
@@ -62,7 +62,7 @@ class QueryRunner
     end
   end
 
-  def csv_query(conn, query)
+  def csv_query(query)
     conn = PG.connect(
       user: @database_connection.user,
       password: @database_connection.password,
@@ -79,5 +79,14 @@ class QueryRunner
     end
     data = data.join("\n")
     data
+  end
+
+  def pg_results(pgresult)
+    rows = []
+    pgresult.each_row {|r| rows << r}
+    {
+      fields: pgresult.fields,
+      rows: rows
+    }
   end
 end
