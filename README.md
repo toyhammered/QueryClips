@@ -1,42 +1,30 @@
 # QueryClips
 
-QueryClips is a simple, powerful, open-source data querying service.
+QueryClips is an easy-to-use, powerful, open-source data querying application.
 
 # Features
 
-### Write queries & save their results
-
-![](https://www.dropbox.com/s/9j8zykfhoezu6zk/Screenshot%202016-04-10%2014.30.22.png?dl=1)
-
-### Configure multiple database connections
-
-![](https://www.dropbox.com/s/cb4arilwmyp5i68/Screenshot%202016-04-10%2014.33.58.png?dl=1)
-dup
-### Export data to CSV and JSON
-
-![](https://www.dropbox.com/s/iqttwtfypf28b6m/Screenshot%202016-04-10%2014.30.42.png?dl=1)
-
-![](https://www.dropbox.com/s/h2lp8uavkxm9atm/Screenshot%202016-04-10%2014.31.30.png?dl=1)
-
-### Visualizations (still in prototype phase)
-
-![](https://www.dropbox.com/s/h5736by1pg3r536/Screenshot%202016-04-10%2014.31.12.png?dl=1)
-
-### Simple & easy self-hosting
-
-(See "Deploying to Heroku" section below.)
+- Write queries
+- Save query results
+- Support for both PostgreSQL and MySQL
+- Support for multiple database connections
+- Export to CSV and JSON
+- Simple & easy self-hosting (See "Deploying to Heroku" section below.)
 
 # Roadmap
 
 In the short term, we aim to provide:
 
-- Developer-friendly visualizations
 - User accounts
+- Easy access to database schema information
+- Permalinks for sharing queries
 
 # Starmap
 
 In addition to our short term plans to allow simple querying and sharing, we aim to ultimately provide:
 
+- Developer-friendly visualizations
+- SQL resource library
 - A visually pleasing query experience
 - A powerful point-and-click query editor
 - Pivoting and drilling into data
@@ -47,7 +35,7 @@ In addition to our short term plans to allow simple querying and sharing, we aim
 - Dashboards
 - Reports by email
 
-# Running QueryClips
+# Usage
 
 ## Deploying to Heroku
 
@@ -74,19 +62,6 @@ Then, whenever you want to update, you simply:
 1. `git pull origin master`
 2. `git push heroku master`
 3. `heroku run rake db:migrate`
-
-# Usage
-
-## Database Credentials
-
-Convention suggests using read-only credentials for any database connections within QueryClips, thus preventing users from accidentally or maliciously making changes to your database. If you're managing your own Postgresql, here's how you can create a new read-only database user:
-
-```
-CREATE USER queryclips ENCRYPTED PASSWORD 'password';
-GRANT SELECT ON ALL TABLES IN SCHEMA public TO queryclips;
-GRANT CONNECT ON database my_database TO queryclips;
-GRANT USAGE ON SCHEMA public TO queryclips;
-```
 
 ## Heroku Postgres
 
