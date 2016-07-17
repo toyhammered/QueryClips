@@ -63,10 +63,6 @@ Then, whenever you want to update, you simply:
 2. `git push heroku master`
 3. `heroku run rake db:migrate`
 
-## Heroku Postgres
-
-If you're using Heroku's managed Postgresql service, you should [create a read-only follower](https://devcenter.heroku.com/articles/heroku-postgres-follower-databases) to your database and tell QueryClips to connect to that database instead.
-
 # Dev Installation
 
 ## Requirements:
