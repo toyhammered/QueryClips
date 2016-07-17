@@ -8,25 +8,13 @@ class BaseDialect
   end
 
   def run(format)
-    result = query_with_format(format)
-
-    return_value = {}
-    case format
-    when :raw, :json
-      return_value[:raw] = result
-      return_value[:json] = result.to_json
-    when :csv
-      return_value[:csv] = result
-    end
-    return_value
-  end
-
-  def query_with_format(format)
     result = nil
 
     case format
-    when :raw, :json
+    when :raw
       result = normal_query(@query)
+    when :json
+      result = json_query(@query)
     when :csv
       result = csv_query(@query)
     end
