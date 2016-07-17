@@ -12,8 +12,8 @@
         "title": {
         "text": "<%= @saved_query.name %>"
         },
-        "dataKey": "<%= @result.fields[0] %>",
-        "xAxisKey": "<%= @result.fields[1] %>"
+        "dataKey": "<%= @result[:fields][0] %>",
+        "xAxisKey": "<%= @result[:fields][1] %>"
         }
       </div>
       <p class="bg-info">

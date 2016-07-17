@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails_12factor'
 gem 'rails', '4.1.12'
 gem 'pg'
+gem 'mysql2'
 gem 'puma'
 gem 'friendly_id'
 # Use SCSS for stylesheets
@@ -37,3 +38,4 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem "better_errors", group: [:development]
 gem "binding_of_caller", group: [:development]
+gem "pry", group: [:development]

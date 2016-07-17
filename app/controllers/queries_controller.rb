@@ -91,15 +91,12 @@ class QueriesController < ApplicationController
 
     case format
     when :html
-      result_obj = query_runner.run(:raw)
-      @result = result_obj[:raw]
-      @result_json = result_obj[:json]
+      @result = query_runner.run(:raw)
+      @result_json = query_runner.run(:json)
     when :csv
-      result_obj = query_runner.run(:csv)
-      @result_csv = result_obj[:csv]
+      @result_csv = query_runner.run(:csv)
     when :json
-      result_obj = query_runner.run(:json)
-      @result_json = result_obj[:json]
+      @result_json = query_runner.run(:json)
     end
 
     @result
