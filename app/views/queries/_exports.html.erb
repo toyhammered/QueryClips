@@ -1,6 +1,6 @@
 <div class="btn-group">
   <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Export data as: <span class="caret"></span>
+    Export <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
     <li>
@@ -9,6 +9,9 @@
     <li>
       <%= link_to "JSON", query_path(@saved_query, format: :json) %>
     </li>
+    <li role="separator" class="divider"></li>
+    <li>
+      <input type="text" class="form-control" readonly value="https://queryclips.com/foobar"></input>
+    </li>
   </ul>
 </div>
-
