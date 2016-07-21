@@ -1,17 +1,27 @@
-<h1>Query: <%= @saved_query.name %></h1>
-<%= render "exports" %>
-<%= link_to "Delete", query_path(@saved_query), method: :delete, class: 'btn btn-danger btn-xs', data: { confirm: 'Are you sure?' } %>
+<div class="row">
+  <h1><%= link_to @saved_query.name, query_path(@saved_query) %></h1>
+</div>
+<div class="row">
+  <div class="pull-left">
+    <%= render "exports" %>
+    <%= link_to "Delete", query_path(@saved_query), method: :delete, class: 'btn btn-danger btn-xs', data: { confirm: 'Are you sure?' } %>
+  </div>
+  <div class="form-group form-inline pull-right">
+    Share this QueryClip: <input class="form-control" value="<%= query_url(@saved_query) %>" readonly />
+  </div>
+</div>
+<div class="row">
+  <%= render "error_message" if @error %>
+  <%= render "form" %>
 
-<%= render "error_message" if @error %>
-<%= render "form" %>
 
+  <%= render "viz", result: @result if @result %>
+  <%= render "results_table", result: @result if @result %>
 
-<%= render "viz", result: @result if @result %>
-<%= render "results_table", result: @result if @result %>
-
-<p>
-  These results came from the 
-  <%= link_to @saved_query.database_connection.name, database_connection_path(@saved_query.database_connection) %>
-  database.
-</p>
-<%= render "debug" %>
+  <p>
+    These results came from the 
+    <%= link_to @saved_query.database_connection.name, database_connection_path(@saved_query.database_connection) %>
+    database.
+  </p>
+  <%= render "debug" %>
+</div>
