@@ -85,18 +85,17 @@ class QueriesController < ApplicationController
     raise "No format specified" if format.nil?
 
     query_runner = QueryRunner.new(
-      query: @query,
       database_connection: @database_connection
     )
 
     case format
     when :html
-      @result = query_runner.run(:raw)
-      @result_json = query_runner.run(:json)
+      @result = query_runner.run(@query, :raw)
+      @result_json = query_runner.run(@query, :json)
     when :csv
-      @result_csv = query_runner.run(:csv)
+      @result_csv = query_runner.run(@query, :csv)
     when :json
-      @result_json = query_runner.run(:json)
+      @result_json = query_runner.run(@query, :json)
     end
 
     @result
