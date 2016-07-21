@@ -1,0 +1,12 @@
+<h3>Queries</h3>
+<%- if @connection.saved_queries.count < 1 %>
+  (none)
+<%- else %>
+  <ul>
+    <%- @connection.saved_queries.each do |saved_query| %>
+      <li>
+        <%= link_to saved_query.name, query_path(saved_query) %>
+      </li> 
+    <%- end %>
+  </ul>
+<%- end %>

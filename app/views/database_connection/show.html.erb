@@ -1,43 +1,14 @@
-<h1>Database:</h1>
-<h2><%= @connection.name %></h2>
+<h2><%= link_to @connection.name, database_connection_path(@connection) %></h2>
 
-<div class="col-md-6">
-  <table class="table">
-    <tr>
-      <th>DB Name</th>
-      <td><%= @connection.dbname %></td>
-    </tr>
-    <tr>
-      <th>Host</th>
-      <td><%= @connection.host %></td>
-    </tr>
-    <tr>
-      <th>Port</th>
-      <td><%= @connection.port %></td>
-    </tr>
-    <tr>
-      <th>User</th>
-      <td><%= @connection.user %></td>
-    </tr>
-    <tr>
-      <th>Password</th>
-      <td><%= "*" * @connection.password.size %></td>
-    </tr>
-  </table>
-  <%= link_to "Delete", database_connection_path(@connection), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+<div class="row">
+  <div class="col-md-6">
+    <%= render "details" %>
+  </div>
+  <div class="col-md-6">
+    <%= render "saved_queries" %>
 
-  <h3>Saved queries associated with this database:</h3>
-  <%- if @connection.saved_queries.count < 1 %>
-    (none)
-  <%- else %>
-    <ul>
-      <%- @connection.saved_queries.each do |saved_query| %>
-        <li>
-          <%= link_to saved_query.name, query_path(saved_query) %>
-        </li> 
-      <%- end %>
-    </ul>
-  <%- end %>
-
+  </div>
 </div>
-
+<div class="row">
+  <%= render "schema" %>
+</div>

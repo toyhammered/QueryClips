@@ -1,0 +1,14 @@
+<table class="table">
+  <tr>
+    <%- table[:fields].each do |field| %>
+      <th><%= field %></th>
+    <%- end %>
+  </tr>
+  <%- table[:rows].each do |row| %>
+    <tr>
+      <%- row.each do |val| %>
+        <td><%= val %></td>
+      <%- end %>
+    </tr>
+  <%- end %>
+</table>

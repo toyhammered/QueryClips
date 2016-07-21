@@ -1,0 +1,24 @@
+<h3>Connection Details</h3>
+<table class="table">
+  <tr>
+    <th>DB Name</th>
+    <td><%= @connection.dbname %></td>
+  </tr>
+  <tr>
+    <th>Host</th>
+    <td><%= @connection.host %></td>
+  </tr>
+  <tr>
+    <th>Port</th>
+    <td><%= @connection.port %></td>
+  </tr>
+  <tr>
+    <th>User</th>
+    <td><%= @connection.user %></td>
+  </tr>
+  <tr>
+    <th>Password</th>
+    <td><%= "*" * @connection.password.size %></td>
+  </tr>
+</table>
+<%= link_to "Delete", database_connection_path(@connection), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
