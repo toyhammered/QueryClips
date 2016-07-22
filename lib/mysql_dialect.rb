@@ -21,6 +21,28 @@ class MysqlDialect < BaseDialect
     csv_string
   end
 
+  def tables
+    conn = database_connection
+    query = "SELECT table_name FROM information_schema.tables WHERE table_type = 'BASE TABLE' ORDER BY table_name ASC;"
+    result = format_results(conn.query(query))
+    conn.close
+    result
+  end
+
+  def table_schema(table)
+    conn = database_connection
+    query = conn.prepare("SELECT column_name, data_type, character_maximum_length FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = ?;")
+    result = format_results(query.execute(table))
+
+    # for some reason this query returns data in a different format
+    result[:rows] = result[:rows].collect do |row|
+      row.collect {|r| r[1]}
+    end
+    
+    conn.close
+    result
+  end
+
   private
   
   def format_results(mysqlresult)
