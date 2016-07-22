@@ -1,0 +1,15 @@
+<a name="tables"></a>
+<h3><%= @connection.tables.count %> tables</h3>
+<%- @connection.tables.each do |table| %>
+  <li>
+    <a href="#<%= table %>"><%= table %></a>
+  </li>
+<%- end %>
+
+<%- @connection.tables.each do |table| %>
+  <a name="<%= table %>"></a>
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= table %></div>
+    <%= render "schema_details", table: @connection.table_schema(table) %>
+  </div>
+<%- end %>

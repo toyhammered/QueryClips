@@ -1,7 +1,6 @@
-class QueryRunner
+class SchemaExplorer
   def initialize(options = {})
     @database_connection = options[:database_connection]
-
     raise "No database connection specified." if @database_connection.nil?
 
     case @database_connection.dialect
@@ -16,16 +15,14 @@ class QueryRunner
     @dialect = dialect.new(
       database_connection: @database_connection
     )
+
   end
 
-  def run(query, format)
-    @dialect.query(
-      query: query,
-      format: format
-    )
-  rescue Mysql2::Error => e
-    raise QueryException.new(e)
-  rescue PG::Error => e
-    raise QueryException.new(e)
+  def tables
+    @dialect.tables[:rows].collect {|r| r.first }
+  end
+
+  def table_schema(table)
+    @dialect.table_schema(table)
   end
 end

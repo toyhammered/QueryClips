@@ -24,6 +24,22 @@ class PostgresqlDialect < BaseDialect
     data
   end
 
+  def tables
+    conn = database_connection
+    query = "SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE' ORDER BY table_name ASC;"
+    result = format_results(conn.exec(query))
+    conn.finish
+    result
+  end
+
+  def table_schema(table)
+    conn = database_connection
+    query = "SELECT column_name, data_type, character_maximum_length FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = '#{conn.escape_string(table)}';"
+    result = format_results(conn.exec(query))
+    conn.finish
+    result
+  end
+
   private
 
   def format_results(pgresult)
