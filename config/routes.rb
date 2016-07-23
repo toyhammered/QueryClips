@@ -4,5 +4,8 @@ Rails.application.routes.draw do
     get :run, on: :collection
   end
 
+  get '/signup', to: 'users#new'
+  resources :users, only: [:new, :create]
+
   root 'queries#index'
 end
