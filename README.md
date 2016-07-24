@@ -80,7 +80,14 @@ Please open an github issue to request a feature.
 
 # Contributing
 
-Contributions are welcome! Use pull requests. A great way to get started is to improve documentation or pick an "enhancement" issue and comment on the issue with your intention to contribute to it.
+Contributions are welcome! Please use pull requests.
+
+A great way to get started is to:
+
+1. Improve documentation
+2. Pick an issue marked as [help wanted](https://github.com/dpaola2/QueryClips/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22) and comment on the issue with your intention to contribute to it.
+
+While we appreciate contributors, we will be sticking to our roadmap. Please talk to us before you begin coding so that we can confirm that your intended bugfix / feature / enhancement has a high likelihood of being accepted.
 
 # License
 
