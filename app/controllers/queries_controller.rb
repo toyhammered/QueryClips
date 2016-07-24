@@ -2,7 +2,7 @@ class QueriesController < ApplicationController
   before_filter :authorize
   
   def index
-    @saved_queries = SavedQuery.all
+    @saved_queries = SavedQuery.recent
     load_all_database_connections
   end
 

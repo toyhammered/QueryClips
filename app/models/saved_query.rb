@@ -7,4 +7,8 @@ class SavedQuery < ActiveRecord::Base
 
   belongs_to :database_connection
   belongs_to :user
+
+  def self.recent
+    SavedQuery.order("created_at DESC")
+  end
 end
