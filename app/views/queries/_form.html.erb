@@ -1,13 +1,13 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <%- if @saved_query %>
-      <%= form_for(@saved_query, as: :query, url: query_path(@saved_query), method: :patch) do |f| %>
+    <%- if @saved_query.id.nil? %>
+      <%= form_for(@saved_query, url: queries_path, method: :post) do |f| %>
         <%= render "form_body" %>
       <%- end %>
     <%- else %>
-      <form action="/queries/run" method="get">
+      <%= form_for(@saved_query, url: query_path(@saved_query), method: :patch) do |f| %>
         <%= render "form_body" %>
-      </form>
+      <%- end %>
     <%- end %>
   </div>
 </div>

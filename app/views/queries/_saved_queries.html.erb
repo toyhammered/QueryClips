@@ -1,7 +1,18 @@
-<ul>
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>User</th>
+    <th>Created On</th>
+  </tr>
+  
   <%- @saved_queries.each do |sq| %>
-    <li>
-      <%= link_to sq.name, query_path(sq) %>
-    </li>
+    <tr>
+      <td>
+        <h4><%= link_to sq.name, query_path(sq) %></h4>
+        <small><%= sq.database_connection.name %></small>
+      </td>
+      <td><%= sq.user.email %></td>
+      <td><%= time_ago_in_words(sq.created_at) %></td>
+    </tr>
   <%- end %>
-</ul>
+</table>
