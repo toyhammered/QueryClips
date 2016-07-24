@@ -7,11 +7,13 @@
     <tr>
       <th>Database</th>
       <th>Created By</th>
+      <th>Created On</th>
     </tr>
     <%- @connections.each do |conn| %>
     <tr>
       <td><%= link_to conn.name, database_connection_path(conn) %></td>
       <td><%= conn.user.email %></td>
+      <td><%= conn.created_at.strftime("%A, %b %-d, %Y") %></td>
     </tr>
     <%- end %>
   </table>
