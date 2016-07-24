@@ -1,6 +1,6 @@
 # QueryClips
 
-QueryClips is an easy-to-use, powerful, open-source data querying application.
+QueryClips is an easy-to-use, powerful, open-source data querying application. Check out the [Github repository](http://github.com/dpaola2/QueryClips).
 
 # Features
 
