@@ -4,36 +4,34 @@ QueryClips is an easy-to-use, powerful, open-source data querying application.
 
 # Features
 
-- Write queries
-- Save query results
-- Support for both PostgreSQL and MySQL
+- Write queries & save results
+- Easy sharing & exporting to CSV & JSON
+- Database schema quick-reference
 - Support for multiple database connections
-- Export to CSV and JSON
+- Support for both PostgreSQL and MySQL
 - Simple & easy self-hosting (See "Deploying to Heroku" section below.)
 
 # Roadmap
 
 In the short term, we aim to provide:
 
-- User accounts
-- Easy access to database schema information
-- Permalinks for sharing queries
+- Developer-friendly visualizations
 
 # Starmap
 
-In addition to our short term plans to allow simple querying and sharing, we aim to ultimately provide:
+In addition to our short term plans, we aim to eventually provide:
 
-- Developer-friendly visualizations
-- SQL resource library
-- A visually pleasing query experience
-- A powerful point-and-click query editor
-- Pivoting and drilling into data
-- Comprehensive data exporting
-- Mechanism for organizing queries
-- A chat bot for quick access to your queries
+- Organize your queries
+- SQL library
+- Visually pleasing query experience
+- Powerful point-and-click querying
 - A hosted version of QueryClips for teams that don't wish to host their own instances
-- Dashboards
+- Pivoting and Drilldown ability
+- Comprehensive data exporting
+- Chat bot integration
+- Webhooks
 - Reports by email
+- Dashboards
 
 # Usage
 
@@ -42,12 +40,6 @@ In addition to our short term plans to allow simple querying and sharing, we aim
 Click this button: [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dpaola2/QueryClips)
 
 This will deploy a free heroku application with a hobby Postgresql addon.
-
-## Protecting your instance
-
-Until user accounts exist, you can protect your instance by setting two environment variables: `BASIC_AUTH_USERNAME` and `BASIC_AUTH_PASSWORD`. You can do this on heroku through the dashboard or by running:
-
-`$ heroku config:set BASIC_AUTH_USERNAME=alice BASIC_AUTH_PASSWORD=password`
 
 ## Updating
 
