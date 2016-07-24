@@ -1,4 +1,6 @@
 class QueriesController < ApplicationController
+  before_filter :authorize
+  
   def index
     @saved_queries = SavedQuery.all
     load_all_database_connections
@@ -18,7 +20,8 @@ class QueriesController < ApplicationController
     @saved_query = SavedQuery.create!(
       name: params[:name],
       query: params[:query],
-      database_connection_id: params[:database_connection_id]
+      database_connection_id: params[:database_connection_id],
+      user_id: current_user.id
     )
     redirect_to query_path(@saved_query)
   end

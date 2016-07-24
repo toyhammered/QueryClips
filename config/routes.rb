@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'landing/index'
+
   get '/signup',     to: 'users#new'
   get '/login',      to: 'sessions#new'
   post '/login',     to: 'sessions#create'
@@ -10,5 +12,5 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:new, :create]
 
-  root 'queries#index'
+  root 'landing#index'
 end

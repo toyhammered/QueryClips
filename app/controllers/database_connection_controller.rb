@@ -1,4 +1,6 @@
 class DatabaseConnectionController < ApplicationController
+  before_filter :authorize
+  
   def index
     @connections = DatabaseConnection.all
   end
