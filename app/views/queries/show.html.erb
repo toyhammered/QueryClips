@@ -13,7 +13,9 @@
 <div class="row">
   <%= render "error_message" if @error %>
   <%= render "form" %>
-  <%= render "viz", result: @result if @result %>
+  <%- if ENV['SHOW_VIZ'] == 'true' %>
+    <%= render "viz", result: @result if @result %>
+  <%- end %>
   <%= render "results_table", result: @result if @result %>
   <%= render "debug" %>
 </div>
