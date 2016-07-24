@@ -39,3 +39,4 @@ gem 'bcrypt', '~> 3.1.7'
 gem "better_errors", group: [:development]
 gem "binding_of_caller", group: [:development]
 gem "pry", group: [:development]
+gem "redcarpet"
