@@ -1,11 +1,6 @@
 <div class="form-group">
-  <%- if @query.nil? %>
-    <textarea name="query" placeholder="Here goes your query" class="form-control"></textarea>
-    <div id="query-box" />
-  <%- else %>
-    <textarea name="query" placeholder="Here goes your query" class="form-control"><%= @query %></textarea>
-    <div id="query-box"><%= @query %></div>
-  <%- end %>
+  <textarea name="query" placeholder="Here goes your query" class="form-control"><%= @saved_query.query %></textarea>
+  <div id="query-box"><%= @saved_query.query %></div>
 </div>
 <script>
   var queryEditor = ace.edit("query-box");
