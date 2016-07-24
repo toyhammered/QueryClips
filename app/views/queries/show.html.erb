@@ -15,11 +15,5 @@
   <%= render "form" %>
   <%= render "viz", result: @result if @result %>
   <%= render "results_table", result: @result if @result %>
-
-  <p>
-    These results came from the 
-    <%= link_to @saved_query.database_connection.name, database_connection_path(@saved_query.database_connection) %>
-    database.
-  </p>
   <%= render "debug" %>
 </div>

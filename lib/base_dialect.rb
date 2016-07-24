@@ -23,7 +23,6 @@ class BaseDialect
       result = csv_query(query)
     end
     
-    raise "Result was nil. Check your format: #{format}" if result.nil?
     result
   end
 end
