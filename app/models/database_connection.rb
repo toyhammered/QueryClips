@@ -1,5 +1,6 @@
 class DatabaseConnection < ActiveRecord::Base
   has_many :saved_queries
+  belongs_to :user
 
   def tables
     SchemaExplorer.new(database_connection: self).tables

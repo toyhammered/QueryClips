@@ -1,6 +1,10 @@
 class SavedQuery < ActiveRecord::Base
   include FriendlyId
-  belongs_to :database_connection
-  friendly_id :name, use: :slugged
+
   validates_presence_of :name, :slug
+
+  friendly_id :name, use: :slugged
+
+  belongs_to :database_connection
+  belongs_to :user
 end
