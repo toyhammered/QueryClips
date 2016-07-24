@@ -1,10 +1,10 @@
 <%= render "shared/error_messages", model: @saved_query %>
 
-<input type="text" name="name" placeholder="Name your query..." class="form-control" value="<%= @saved_query.name %>" />
-
+<div class="form-group">
+  <input type="text" name="name" placeholder="Name your query..." class="form-control" value="<%= @saved_query.name %>" />
+</div>
 <%= render "query_box" %>
 <%= render "database_connection_selector" %>
-
 <div class="form-group">
   <input type="submit" value="Run Query Clip" class="btn btn-primary form-control" />
 </div>

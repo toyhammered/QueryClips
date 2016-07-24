@@ -1,5 +1,6 @@
-<div class="form-group">
-  <select id="database_connection_id" name="database_connection_id">
+<div class="form-group form-inline">
+  <label>Database:</label>
+  <select id="database_connection_id" name="database_connection_id" class="form-control">
     <%- @database_connections.each do |conn| %>
       <%- if @saved_query && @saved_query.database_connection && @saved_query.database_connection.id == conn.id %>
         <option value="<%= conn.id %>" selected><%= conn.name %></option>

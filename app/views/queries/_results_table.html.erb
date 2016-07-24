@@ -1,3 +1,6 @@
+<%- if @result[:rows].count < 1 %>
+  <h1>No results.</h1>
+<%- else %>
 <h3>Results</h3>
 <table class="table">
   <tr>
@@ -6,10 +9,11 @@
     <%- end %>
   </tr>
   <%- @result[:rows].each do |row| %>
-    <tr>
-      <%- row.each do |col| %>
-        <td><%= col %></td>
-      <%- end %>
-    </tr>
+  <tr>
+    <%- row.each do |col| %>
+      <td><%= col %></td>
+    <%- end %>
+  </tr>
   <%- end %>
 </table>
+<%- end %>
