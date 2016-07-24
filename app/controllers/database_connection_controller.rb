@@ -21,7 +21,7 @@ class DatabaseConnectionController < ApplicationController
       dbname: dbname,
       host: host,
       port: port,
-      username: user,
+      username: username,
       password: password,
       user_id: current_user.id
     )
