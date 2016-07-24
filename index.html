@@ -31,17 +31,17 @@
         <h1>
 <a id="queryclips" class="anchor" href="#queryclips" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>QueryClips</h1>
 
-<p>QueryClips is an easy-to-use, powerful, open-source data querying application.</p>
+<p>QueryClips is an easy-to-use, powerful, open-source data querying application. Check out the <a href="http://github.com/dpaola2/QueryClips">Github repository</a>.</p>
 
 <h1>
 <a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h1>
 
 <ul>
-<li>Write queries</li>
-<li>Save query results</li>
-<li>Support for both PostgreSQL and MySQL</li>
+<li>Write queries &amp; save results</li>
+<li>Easy sharing &amp; exporting to CSV &amp; JSON</li>
+<li>Database schema quick-reference</li>
 <li>Support for multiple database connections</li>
-<li>Export to CSV and JSON</li>
+<li>Support for both PostgreSQL and MySQL</li>
 <li>Simple &amp; easy self-hosting (See "Deploying to Heroku" section below.)</li>
 </ul>
 
@@ -51,28 +51,28 @@
 <p>In the short term, we aim to provide:</p>
 
 <ul>
-<li>User accounts</li>
-<li>Easy access to database schema information</li>
-<li>Permalinks for sharing queries</li>
+<li>Live demo instance to explore QueryClips</li>
+<li>Preflight check: onboarding &amp; configuration help</li>
+<li>Developer-friendly visualizations</li>
 </ul>
 
 <h1>
 <a id="starmap" class="anchor" href="#starmap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Starmap</h1>
 
-<p>In addition to our short term plans to allow simple querying and sharing, we aim to ultimately provide:</p>
+<p>In addition to our short term plans, we aim to eventually provide:</p>
 
 <ul>
-<li>Developer-friendly visualizations</li>
-<li>SQL resource library</li>
-<li>A visually pleasing query experience</li>
-<li>A powerful point-and-click query editor</li>
-<li>Pivoting and drilling into data</li>
-<li>Comprehensive data exporting</li>
-<li>Mechanism for organizing queries</li>
-<li>A chat bot for quick access to your queries</li>
+<li>Organize your queries</li>
+<li>SQL library</li>
+<li>Visually pleasing query experience</li>
+<li>Powerful point-and-click querying</li>
 <li>A hosted version of QueryClips for teams that don't wish to host their own instances</li>
-<li>Dashboards</li>
+<li>Pivoting and Drilldown ability</li>
+<li>Comprehensive data exporting</li>
+<li>Chat bot integration</li>
+<li>Webhooks</li>
 <li>Reports by email</li>
+<li>Dashboards</li>
 </ul>
 
 <h1>
@@ -84,13 +84,6 @@
 <p>Click this button: <a href="https://heroku.com/deploy?template=https://github.com/dpaola2/QueryClips"><img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy"></a></p>
 
 <p>This will deploy a free heroku application with a hobby Postgresql addon.</p>
-
-<h2>
-<a id="protecting-your-instance" class="anchor" href="#protecting-your-instance" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Protecting your instance</h2>
-
-<p>Until user accounts exist, you can protect your instance by setting two environment variables: <code>BASIC_AUTH_USERNAME</code> and <code>BASIC_AUTH_PASSWORD</code>. You can do this on heroku through the dashboard or by running:</p>
-
-<p><code>$ heroku config:set BASIC_AUTH_USERNAME=alice BASIC_AUTH_PASSWORD=password</code></p>
 
 <h2>
 <a id="updating" class="anchor" href="#updating" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Updating</h2>
@@ -151,7 +144,16 @@
 <h1>
 <a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h1>
 
-<p>Contributions are welcome! Use pull requests. A great way to get started is to improve documentation or pick an "enhancement" issue and comment on the issue with your intention to contribute to it.</p>
+<p>Contributions are welcome! Please use pull requests.</p>
+
+<p>A great way to get started is to:</p>
+
+<ol>
+<li>Improve documentation</li>
+<li>Pick an issue marked as <a href="https://github.com/dpaola2/QueryClips/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22">help wanted</a> and comment on the issue with your intention to contribute to it.</li>
+</ol>
+
+<p>While we appreciate contributors, we will be sticking to our roadmap. Please talk to us before you begin coding so that we can confirm that your intended bugfix / feature / enhancement has a high likelihood of being accepted.</p>
 
 <h1>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h1>
