@@ -13,7 +13,7 @@ class DatabaseConnectionController < ApplicationController
     dbname = params[:dbname]
     host = params[:host]
     port = params[:port]
-    user = params[:user]
+    username = params[:username]
     password = params[:password]
     conn = DatabaseConnection.create!(
       name: name,
@@ -21,8 +21,9 @@ class DatabaseConnectionController < ApplicationController
       dbname: dbname,
       host: host,
       port: port,
-      user: user,
-      password: password
+      username: user,
+      password: password,
+      user_id: current_user.id
     )
     redirect_to database_connection_path(conn)
   end

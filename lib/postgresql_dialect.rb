@@ -54,7 +54,7 @@ class PostgresqlDialect < BaseDialect
 
   def database_connection
     PG.connect(
-      user: @database_connection.user,
+      user: @database_connection.username,
       password: @database_connection.password,
       dbname: @database_connection.dbname,
       host: @database_connection.host,

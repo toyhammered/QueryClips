@@ -57,7 +57,7 @@ class MysqlDialect < BaseDialect
 
   def database_connection
     Mysql2::Client.new(
-      username: @database_connection.user,
+      username: @database_connection.username,
       password: @database_connection.password,
       database: @database_connection.dbname,
       host: @database_connection.host,
