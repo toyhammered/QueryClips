@@ -1,6 +1,6 @@
 class DatabaseConnectionController < ApplicationController
   before_filter :authenticate!
-  before_filter :preflight_check, only: [:index]
+  before_filter :preflight_check, only: [:index, :show, :new]
   
   def index
     @connections = DatabaseConnection.all

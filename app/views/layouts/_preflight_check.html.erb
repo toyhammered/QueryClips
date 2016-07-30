@@ -3,8 +3,17 @@
     <p class="alert alert-warning" role="alert">
       <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
       You haven't configured any databases yet.
-      <%= link_to "click here", new_database_connection_path %>
+      <%= link_to "Click here", new_database_connection_path %>
       to add your first database connection.
     </p>
+  <%- else %>
+    <%- if SavedQuery.count < 1 %>
+      <p class="alert alert-warning" role="alert">  
+        <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+        You haven't added any query clips yet.
+        <%= link_to "Click here", new_query_path %>
+        to add your first query clip.
+      </p>
+    <%- end %>    
   <%- end %>
 </div>

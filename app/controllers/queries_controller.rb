@@ -18,7 +18,6 @@ class QueriesController < ApplicationController
     if @saved_query.save
       redirect_to query_path(@saved_query)      
     else
-      flash[:error] = "There was a problem saving your query."
       render :new
     end
   end
@@ -60,7 +59,6 @@ class QueriesController < ApplicationController
     load_all_database_connections
 
     if @saved_query.update_attributes(query_params)
-      flash[:notice] = "Updated."
       redirect_to query_path(@saved_query)
     else
       render :show

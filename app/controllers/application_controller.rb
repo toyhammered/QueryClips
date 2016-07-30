@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
   def preflight_check
     if DatabaseConnection.count < 1
       @preflight_check = true
+    else
+      if SavedQuery.count < 1
+        @preflight_check = true
+      end
     end
   end
 end
