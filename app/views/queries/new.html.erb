@@ -1,2 +1,9 @@
 <h1>New Query</h1>
-<%= render "form" %>
+<%- if DatabaseConnection.count < 1 %>
+    <div class="jumbotron">
+      <p>Please add a database before creating a new query.</p>
+      <p><%= link_to "Create a database", new_database_connection_path, class: "btn btn-primary" %></p>
+    </div>
+<%- else %>
+  <%= render "form" %>
+<%- end %>
