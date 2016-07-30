@@ -1,0 +1,14 @@
+<div class="flash">
+  <%- if flash[:notice] %>
+    <p class="alert alert-info" role="alert">
+      <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+      <%= flash[:notice] %>
+    </p>
+  <%- end %>
+  <%- if flash[:error] %>
+    <p class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+      <%= flash[:error] %>
+    </p>
+  <%- end %>
+</div>

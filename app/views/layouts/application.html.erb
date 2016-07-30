@@ -17,16 +17,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/4.2.3/highcharts.js"></script>
   <div class="container">
     <%= render "layouts/navigation" %>
-    <%- if flash[:notice] %>
-      <p class="bg-info">
-        <%= flash[:notice] %>
-      </p>
-    <%- end %>
-    <%- if flash[:error] %>
-      <p class="bg-danger">
-        <%= flash[:error] %>
-      </p>
-    <%- end %>
+    <%= render "layouts/flash" %>
     <%= yield %>
   </div>
 
