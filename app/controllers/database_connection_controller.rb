@@ -8,7 +8,9 @@ class DatabaseConnectionController < ApplicationController
 
   def show
     find_database_connection
-    if !@connection.test
+    if @connection.test
+      @error = false
+    else
       @error = true
     end
   end

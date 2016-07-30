@@ -12,7 +12,6 @@ class DatabaseConnection < ActiveRecord::Base
 
   def test
     self.tables
-    self.table_schema
     return true
   rescue Exception => e
     return false
