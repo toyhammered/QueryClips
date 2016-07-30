@@ -3,11 +3,12 @@
 </div>
 <div class="row">
   <div class="pull-left">
-    <%= render "exports" %>
-    <%= render "settings" if policy(@saved_query).edit? %>
+    <p>Created <%= time_ago_in_words(@saved_query.created_at) %> by <%= @saved_query.user.email %>.</p>
   </div>
   <div class="form-group form-inline pull-right">
-    Share this QueryClip: <input class="form-control" value="<%= query_url(@saved_query) %>" readonly />
+    <%= render "settings" if policy(@saved_query).edit? %>
+    <%= render "exports" %>
+    Share: <input class="form-control" value="<%= query_url(@saved_query) %>" readonly />
   </div>
 </div>
 <div class="row">
