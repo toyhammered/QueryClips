@@ -20,7 +20,7 @@ class PostgresqlDialect < BaseDialect
         data.push(row)
       end
     end
-    data = data.join("\n")
+    data = data.join("")
     data
   end
 
