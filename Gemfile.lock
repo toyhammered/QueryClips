@@ -73,6 +73,8 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     puma (3.2.0)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (1.5.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -142,6 +144,7 @@ DEPENDENCIES
   pg
   pry
   puma
+  pundit
   rails (= 4.1.12)
   rails_12factor
   redcarpet

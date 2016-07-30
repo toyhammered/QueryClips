@@ -1,0 +1,12 @@
+<div class="form-group form-inline">
+  <label>Privacy:</label>
+  <select id="privacy" name="privacy" class="form-control">
+    <%- SavedQuery.privacy_options.each do |scope| %>
+      <%- if @saved_query.privacy == scope %>
+        <option value="<%= scope %>" selected><%= scope %></option>
+      <%- else %>
+        <option value="<%= scope %>"><%= scope %></option>
+      <%- end %>
+    <%- end %>
+  </select>
+</div>

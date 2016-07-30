@@ -18,9 +18,9 @@ module SessionsHelper
     @current_user = nil
   end
 
-  def authorize
+  def authenticate!
     if !logged_in?
-      flash[:error] = "You must be logged in to do that."
+      flash[:notice] = "Please log in."
       redirect_to root_path
     end
   end

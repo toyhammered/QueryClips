@@ -11,4 +11,12 @@ class SavedQuery < ActiveRecord::Base
   def self.recent
     SavedQuery.order("created_at DESC")
   end
+
+  def self.public
+    SavedQuery.where(privacy: 'public')
+  end
+
+  def self.privacy_options
+    ["public", "protected", "private"]
+  end
 end

@@ -4,7 +4,7 @@
 <div class="row">
   <div class="pull-left">
     <%= render "exports" %>
-    <%= render "settings" %>
+    <%= render "settings" if policy(@saved_query).edit? %>
   </div>
   <div class="form-group form-inline pull-right">
     Share this QueryClip: <input class="form-control" value="<%= query_url(@saved_query) %>" readonly />
