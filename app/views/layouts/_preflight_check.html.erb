@@ -1,0 +1,9 @@
+<div class="preflight-check">
+  <%- if DatabaseConnection.count < 1 %>
+    <p class="alert alert-warning" role="alert">
+      You haven't configured any databases yet.
+      <%= link_to "click here", new_database_connection_path %>
+      to add your first database connection.
+    </p>
+  <%- end %>
+</div>

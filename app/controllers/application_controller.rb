@@ -8,4 +8,10 @@ class ApplicationController < ActionController::Base
 
   # Local mixins
   include SessionsHelper
+
+  def preflight_check
+    if DatabaseConnection.count < 1
+      @preflight_check = true
+    end
+  end
 end
