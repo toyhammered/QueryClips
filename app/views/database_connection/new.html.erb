@@ -1,38 +1,4 @@
 <h1>New Database</h1>
-<div class="col-md-4">
-  <form action="/database_connection" method="POST">
-    <div class="form-group form-inline">
-      <label>Connection Name</label>
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-      <input type="text" name="name" placeholder="My Connection" class="form-control" />
-    </div>
-    <div class="form-group form-inline">
-      <label>Connection Dialect</label>
-      <select type="select" name="dialect" class="form-control">
-        <option>PostgreSQL</option>
-        <option>MySQL</option>
-      </select>
-    </div>
-    <div class="form-group form-inline">
-      <label>Database Name</label>
-      <input type="text" name="dbname" placeholder="MyDB" class="form-control" />
-    </div>
-    <div class="form-group form-inline">
-      <label>Host</label>
-      <input type="text" name="host" placeholder="Host" class="form-control" />
-    </div>
-    <div class="form-group form-inline">
-      <label>Port</label>
-      <input type="text" name="port" placeholder="5432" class="form-control" />
-    </div>
-    <div class="form-group form-inline">
-      <label>Username</label>
-      <input type="text" name="username" placeholder="Username" class="form-control" />
-    </div>
-    <div class="form-group form-inline">
-      <label>Password</label>
-      <input type="text" name="password" placeholder="********" class="form-control" />
-    </div>
-    <input type="submit" value="Save credentials" class="btn btn-primary form-control" />
-  </form>
+<div class="row">
+  <%= render "form" %>
 </div>
