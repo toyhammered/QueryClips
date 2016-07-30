@@ -118,7 +118,7 @@ class QueriesController < ApplicationController
     when :csv
       @result_csv = query_runner.run(@saved_query.query, :csv)
     when :json
-      @result_json = query_runner.run(@saved_query, :json)
+      @result_json = query_runner.run(@saved_query.query, :json)
     end
 
     @result
