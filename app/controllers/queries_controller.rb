@@ -1,5 +1,5 @@
 class QueriesController < ApplicationController
-  before_filter :authenticate!
+  before_filter :authenticate!, except: [:show]
   
   def index
     @saved_queries = SavedQuery.recent
@@ -25,7 +25,7 @@ class QueriesController < ApplicationController
   def show
     find_query
     load_all_database_connections
-    
+        
     respond_to do |format|
       format.html do
         run_query(format: :html)
@@ -54,7 +54,9 @@ class QueriesController < ApplicationController
 
   def update
     find_query
+    authorize_update!
     load_all_database_connections
+
     if @saved_query.update_attributes(query_params)
       flash[:notice] = "Updated."
       redirect_to query_path(@saved_query)
@@ -78,6 +80,13 @@ class QueriesController < ApplicationController
     @saved_query = SavedQuery.friendly.find(@query_id)
   end
 
+  def authorize_update!
+    if !policy(@saved_query).edit?
+      flash[:notice] = "Please log in."
+      redirect_to login_path
+    end
+  end
+  
   def load_database_connection
     @database_connection = DatabaseConnection.find(params[:database_connection_id])
   end

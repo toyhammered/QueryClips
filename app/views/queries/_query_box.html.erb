@@ -1,16 +1,21 @@
 <div class="form-group">
-  <textarea name="query" placeholder="Here goes your query" class="form-control"><%= @saved_query.query %></textarea>
+  <textarea name="query" placeholder="Here goes your query" class="form-control" editable="<%= policy(@saved_query).edit? %>"><%= @saved_query.query %></textarea>
   <div id="query-box"><%= @saved_query.query %></div>
 </div>
 <script>
   var queryEditor = ace.edit("query-box");
   queryEditor.getSession().setMode("ace/mode/sql");
   var textarea = $('textarea[name="query"]').hide();
+  var editable = $('textarea[name="query"]').attr("editable");
+  var readonly = false;
+  if (editable == "false")
+    readonly = true;
   queryEditor.setOptions({
     minLines: 10,
     maxLines: Infinity,
     showPrintMargin: false
   });
+  queryEditor.setReadOnly(readonly);
   queryEditor.getSession().setValue(textarea.val());
   queryEditor.getSession().on('change', function(){
     textarea.val(queryEditor.getSession().getValue());

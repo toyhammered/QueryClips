@@ -20,7 +20,7 @@ module SessionsHelper
 
   def authenticate!
     if !logged_in?
-      flash[:info] = "Please log in."
+      flash[:notice] = "Please log in."
       redirect_to root_path
     end
   end
