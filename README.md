@@ -40,7 +40,7 @@ In addition to our short term plans, we aim to eventually provide:
 
 ## Deploying to Heroku
 
-Click this button: [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dpaola2/QueryClips)<
+Click this button: [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dpaola2/QueryClips)
 
 This will deploy a free heroku application with a hobby Postgresql addon.
 
