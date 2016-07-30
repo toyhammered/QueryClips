@@ -1,10 +1,13 @@
 <div class="btn-group">
-  <button type="button" class="btn btn-warning btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Settings <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
     <li>
-      <%= link_to "Schema Explorer", database_connection_path(@saved_query.database_connection, anchor: 'tables'), target: "_blank" %>
+      <a href="<%= database_connection_path(@saved_query.database_connection, anchor: 'tables') %>" target="_blank">
+        Schema Explorer
+        <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+      </a>
     </li>
     <li class="bg-danger">
       <%= link_to "Delete query", query_path(@saved_query), method: :delete, data: { confirm: 'Are you sure?' } %>
