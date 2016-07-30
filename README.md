@@ -64,7 +64,7 @@ Then, whenever you want to update, you simply:
 ## Requirements:
 
 - Rails 4.1
-- Ruby 2.1.0
+- Ruby 2.2.4
 - Postgres 9.4.4
 
 ## Instructions
