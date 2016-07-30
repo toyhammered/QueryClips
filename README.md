@@ -9,27 +9,26 @@ QueryClips is an easy-to-use, powerful, open-source data querying application. C
 - Write queries & save results
 - Easy sharing & exporting to CSV & JSON
 - Database schema quick-reference
-- Support for multiple database connections
-- Support for both PostgreSQL and MySQL
-- Simple & easy self-hosting (See "Deploying to Heroku" section below.)
+- Support for multiple databases
+- Support for PostgreSQL and MySQL
+- Quick & easy self-hosting (See "Deploying to Heroku" section below.)
 
 # Roadmap
 
 In the short term, we aim to provide:
 
-- Live demo instance to explore QueryClips
-- Preflight check: onboarding & configuration help
+- Improved user management (invite, reset password)
+- Improved query clip organization
 - Developer-friendly visualizations
 
 # Starmap
 
 In addition to our short term plans, we aim to eventually provide:
 
-- Organize your queries
-- SQL library
-- Visually pleasing query experience
-- Powerful point-and-click querying
 - A hosted version of QueryClips for teams that don't wish to host their own instances
+- SQL library
+- Powerful point-and-click querying
+- Support for MariaDB, Microsoft SQL Server, Oracle, and more
 - Pivoting and Drilldown ability
 - Comprehensive data exporting
 - Chat bot integration
@@ -64,8 +63,8 @@ Then, whenever you want to update, you simply:
 ## Requirements:
 
 - Rails 4.1
-- Ruby 2.2.4
-- Postgres 9.4.4
+- Ruby 2.2.4+
+- Postgres 9.4.4+
 
 ## Instructions
 
