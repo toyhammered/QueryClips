@@ -17,9 +17,9 @@ QueryClips is an easy-to-use, powerful, open-source data querying application. C
 
 In the short term, we aim to provide:
 
+- Developer-friendly visualizations
 - Improved user management (invite, reset password)
 - Improved query clip organization
-- Developer-friendly visualizations
 
 # Starmap
 
