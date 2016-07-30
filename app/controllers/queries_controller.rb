@@ -1,5 +1,5 @@
 class QueriesController < ApplicationController
-  before_filter :authorize
+  before_filter :authenticate!
   
   def index
     @saved_queries = SavedQuery.recent
