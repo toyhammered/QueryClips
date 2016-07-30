@@ -18,6 +18,7 @@
   <div class="container">
     <%= render "layouts/navigation" %>
     <%= render "layouts/flash" %>
+    <%= render "layouts/preflight_check" if @preflight_check %>
     <%= yield %>
     <%= render "layouts/footer" %>
   </div>

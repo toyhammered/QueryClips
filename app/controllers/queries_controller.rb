@@ -1,5 +1,6 @@
 class QueriesController < ApplicationController
   before_filter :authenticate!, except: [:show]
+  before_filter :preflight_check, only: [:index, :new, :show]
   
   def index
     @saved_queries = SavedQuery.recent
