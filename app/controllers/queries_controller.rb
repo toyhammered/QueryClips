@@ -24,6 +24,7 @@ class QueriesController < ApplicationController
 
   def show
     find_query
+    authorize_show!
     load_all_database_connections
         
     respond_to do |format|
@@ -68,7 +69,7 @@ class QueriesController < ApplicationController
   private
 
   def query_params
-    params.permit(:name, :query, :database_connection_id)
+    params.permit(:name, :query, :database_connection_id, :privacy)
   end
   
   def load_query
@@ -84,6 +85,18 @@ class QueriesController < ApplicationController
     if !policy(@saved_query).edit?
       flash[:notice] = "Please log in."
       redirect_to login_path
+    end
+  end
+
+  def authorize_show!
+    if !policy(@saved_query).read?
+      if logged_in?
+        flash[:notice] = "That QueryClip is private. Please check with the owner."
+        redirect_to root_path
+      else
+        flash[:notice] = "Please log in."
+        redirect_to login_path
+      end
     end
   end
   

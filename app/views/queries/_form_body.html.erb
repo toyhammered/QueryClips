@@ -9,6 +9,7 @@
 </div>
 <%= render "query_box" %>
 <%= render "database_connection_selector" %>
+<%= render "privacy_selector" if policy(@saved_query).edit? %>
 <div class="form-group">
   <%- if policy(@saved_query).edit? %>
     <input type="submit" value="Run Query Clip" class="btn btn-primary form-control" />

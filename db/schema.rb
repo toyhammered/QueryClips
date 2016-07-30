@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160724182937) do
+ActiveRecord::Schema.define(version: 20160730182024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,9 +34,10 @@ ActiveRecord::Schema.define(version: 20160724182937) do
     t.text     "query"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "database_connection_id", default: 1, null: false
+    t.integer  "database_connection_id", default: 1,        null: false
     t.string   "slug"
-    t.integer  "user_id",                default: 1, null: false
+    t.integer  "user_id",                default: 1,        null: false
+    t.string   "privacy",                default: "public", null: false
   end
 
   add_index "saved_queries", ["slug"], name: "index_saved_queries_on_slug", unique: true, using: :btree
