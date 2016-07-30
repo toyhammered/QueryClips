@@ -1,20 +1,23 @@
 <div class="row">
-  <h1>Databases</h1>
-  <%= link_to "New Database", new_database_connection_path, class: "btn btn-primary" %>
-</div>
-<div class="row">
-  <table class="table">
-    <tr>
-      <th>Database</th>
-      <th>Created By</th>
-      <th>Created On</th>
-    </tr>
-    <%- @connections.each do |conn| %>
-    <tr>
-      <td><%= link_to conn.name, database_connection_path(conn) %></td>
-      <td><%= conn.user.email %></td>
-      <td><%= conn.created_at.strftime("%A, %b %-d, %Y") %></td>
-    </tr>
-    <%- end %>
-  </table>
+  <h2>Databases</h2>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= link_to "New Database", new_database_connection_path, class: "btn btn-primary pull-right" %>
+    </div>
+
+    <table class="table">
+      <tr>
+        <th>Database</th>
+        <th>Created By</th>
+        <th>Added</th>
+      </tr>
+      <%- @connections.each do |conn| %>
+        <tr>
+          <td><%= link_to conn.name, database_connection_path(conn) %></td>
+          <td><%= conn.user.email %></td>
+          <td><%= time_ago_in_words(conn.created_at) %> ago</td>
+        </tr>
+      <%- end %>
+    </table>
+  </div>
 </div>
