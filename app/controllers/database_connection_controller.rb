@@ -8,6 +8,9 @@ class DatabaseConnectionController < ApplicationController
 
   def show
     find_database_connection
+    if !@connection.test
+      @error = true
+    end
   end
 
   def create
