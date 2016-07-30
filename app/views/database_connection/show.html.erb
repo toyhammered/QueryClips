@@ -1,5 +1,7 @@
 <h2><%= link_to @connection.name, database_connection_path(@connection) %></h2>
+<%- if @error %>
 
+<%- end %>
 <div class="row">
   <div class="col-md-6">
     <%= render "details" %>
@@ -8,6 +10,13 @@
     <%= render "saved_queries" %>
   </div>
 </div>
-<div class="row">
-  <%= render "schema" %>
-</div>
+
+<%- if @error %>
+  <p class="alert alert-danger">
+    There was a problem connecting to this database. Please check the credentials.
+  </p>
+<%- else %>
+  <div class="row">
+    <%= render "schema" %>
+  </div>
+<%- end %>
