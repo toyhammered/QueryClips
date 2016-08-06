@@ -3,7 +3,12 @@
     <%= @readme.html_safe %>
   </div>
   <div class="col-md-2">
-    <h3>Sign Up</h3>
-    <%= render "users/form" %>
+    <%- unless signup_disallowed? %>
+      <h3>Sign Up</h3>
+      <%= render "users/form" %>
+    <%- end %>
+    <hr />
+    <h3>Log In</h3>
+    <%= render "sessions/login" %>
   </div>
 </div>

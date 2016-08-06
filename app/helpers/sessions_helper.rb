@@ -24,4 +24,8 @@ module SessionsHelper
       redirect_to root_path
     end
   end
+
+  def signup_disallowed?
+    ENV['ALLOW_SIGNUP'] == 'false'
+  end
 end

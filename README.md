@@ -64,6 +64,7 @@ All configuration is stored in environment variables. The following variables ar
 
 - `HOST`: Required. For example, `queryclips.com` or `localhost:3000`.
 - `MAIL_FROM_ADDRESS`: Optional. The default from address for email. Defaults to `noreply@queryclips.com`.
+- `ALLOW_SIGNUP`: Optional. Set this to `false` to disable signups.
 
 ### Mail
 
