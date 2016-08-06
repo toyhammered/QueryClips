@@ -41,6 +41,7 @@
 <ul>
 <li>Write queries &amp; save results</li>
 <li>Easy sharing &amp; exporting to CSV &amp; JSON</li>
+<li>Email yourself your Query Clips</li>
 <li>Database schema quick-reference</li>
 <li>Support for multiple databases</li>
 <li>Support for PostgreSQL and MySQL</li>
@@ -53,9 +54,9 @@
 <p>In the short term, we aim to provide:</p>
 
 <ul>
+<li>Reports by email</li>
 <li>Developer-friendly visualizations</li>
 <li>Improved user management (invite, reset password)</li>
-<li>Improved query clip organization</li>
 </ul>
 
 <h1>
@@ -65,6 +66,7 @@
 
 <ul>
 <li>A hosted version of QueryClips for teams that don't wish to host their own instances</li>
+<li>Improved organization for your clips</li>
 <li>SQL library</li>
 <li>Powerful point-and-click querying</li>
 <li>Support for MariaDB, Microsoft SQL Server, Oracle, and more</li>
@@ -72,7 +74,6 @@
 <li>Comprehensive data exporting</li>
 <li>Chat bot integration</li>
 <li>Webhooks</li>
-<li>Reports by email</li>
 <li>Dashboards</li>
 </ul>
 
@@ -107,6 +108,35 @@
 <li><code>git push heroku master</code></li>
 <li><code>heroku run rake db:migrate</code></li>
 </ol>
+
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+
+<p>All configuration is stored in environment variables. The following variables are used:</p>
+
+<ul>
+<li>
+<code>HOST</code>: Required. For example, <code>queryclips.com</code> or <code>localhost:3000</code>.</li>
+<li>
+<code>MAIL_FROM_ADDRESS</code>: Optional. The default from address for email. Defaults to <code>noreply@queryclips.com</code>.</li>
+<li>
+<code>ALLOW_SIGNUP</code>: Optional. Set this to <code>false</code> to disable signups.</li>
+</ul>
+
+<h3>
+<a id="mail" class="anchor" href="#mail" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mail</h3>
+
+<p>The following environment variables are required in order to send mail:</p>
+
+<ul>
+<li><code>SMTP_HOST</code></li>
+<li><code>SMTP_PORT</code></li>
+<li><code>SENDGRID_USERNAME</code></li>
+<li><code>SENDGRID_PASSWORD</code></li>
+<li><code>SMTP_DOMAIN</code></li>
+</ul>
+
+<p>We recommend using the <a href="https://devcenter.heroku.com/articles/sendgrid">SendGrind</a> add-on if you're hosting QueryClip yourself on Heroku.</p>
 
 <h1>
 <a id="dev-installation" class="anchor" href="#dev-installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dev Installation</h1>
