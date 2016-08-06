@@ -1,0 +1,21 @@
+<%= render "shared/error_messages", model: user %>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= form_for(user, url: user_path(user), method: :patch) do |f| %>
+      <div class="form-group form-inline">
+        <label>Admin?</label>
+        <select id="admin" name="admin" class="form-control">
+          <%- if user.admin? %>
+          <option value="true" selected>true</option>
+          <option value="false">false</option>
+          <%- else %>
+          <option value="true">true</option>
+          <option value="false" selected>false</option>
+          <%- end %>
+        </select>
+        <input type="submit" value="Save" class="btn btn-primary form-control" />
+      </div>
+      <%- end %>
+  </div>
+</div>

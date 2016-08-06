@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate!, except: [:new, :create]
+  before_filter :authorize_admin!, only: :update
   
   def index
     @users = User.all
@@ -24,6 +25,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    find_user
+
+    @user.admin = params[:admin]
+    if @user.save
+      redirect_to user_path(@user)
+    else
+      render :show
+    end
+  end
+
   private
 
   def user_params
@@ -38,8 +50,12 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
-    if @user.nil?
+  end
 
+  def authorize_admin!
+    if !current_user.admin?
+      flash[:notice] = "Please check to make sure you have proper permissions."
+      redirect_to user_path(@user)
     end
   end
 end

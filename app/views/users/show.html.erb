@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col-md-6">
-    <h2><%= @user.email %></h3>
+  <div class="col-md-4">
+    <h2><%= @user.email %></h2>
     <%- if @user.admin? %>
       <span class="label label-primary">Admin</span>
     <%- end %>
@@ -12,5 +12,8 @@
         </li>
       <%- end %>
     </ul>
+    <%- if current_user.admin? && @user != current_user %>
+      <%= render "admin_form", user: @user %>
+    <%- end %>
   </div>
 </div>
