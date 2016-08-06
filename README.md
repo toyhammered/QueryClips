@@ -8,6 +8,7 @@ QueryClips is an easy-to-use, powerful, open-source data querying application. C
 
 - Write queries & save results
 - Easy sharing & exporting to CSV & JSON
+- Email yourself your Query Clips
 - Database schema quick-reference
 - Support for multiple databases
 - Support for PostgreSQL and MySQL
@@ -17,15 +18,16 @@ QueryClips is an easy-to-use, powerful, open-source data querying application. C
 
 In the short term, we aim to provide:
 
+- Reports by email
 - Developer-friendly visualizations
 - Improved user management (invite, reset password)
-- Improved query clip organization
 
 # Starmap
 
 In addition to our short term plans, we aim to eventually provide:
 
 - A hosted version of QueryClips for teams that don't wish to host their own instances
+- Improved organization for your clips
 - SQL library
 - Powerful point-and-click querying
 - Support for MariaDB, Microsoft SQL Server, Oracle, and more
@@ -33,7 +35,6 @@ In addition to our short term plans, we aim to eventually provide:
 - Comprehensive data exporting
 - Chat bot integration
 - Webhooks
-- Reports by email
 - Dashboards
 
 # Usage
