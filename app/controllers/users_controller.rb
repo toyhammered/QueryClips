@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate!, except: [:new, :create]
   before_filter :authorize_admin!, only: :update
+  before_filter :check_for_signup!, only: [:new, :create]
   
   def index
     @users = User.all
@@ -56,6 +57,13 @@ class UsersController < ApplicationController
     if !current_user.admin?
       flash[:notice] = "Please check to make sure you have proper permissions."
       redirect_to user_path(@user)
+    end
+  end
+
+  def check_for_signup!
+    if signup_disallowed?
+      flash[:notice] = "The owner has disabled new signups on this Query Clips instance."
+      redirect_to root_path
     end
   end
 end
