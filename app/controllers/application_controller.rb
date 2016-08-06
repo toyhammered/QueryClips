@@ -10,6 +10,9 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def preflight_check
+    @preflight_check = false
+
+    # Check for user-configurable items
     if DatabaseConnection.count < 1
       @preflight_check = true
     else
@@ -17,5 +20,13 @@ class ApplicationController < ActionController::Base
         @preflight_check = true
       end
     end
+
+    # Check for environment configuration options
+    if ENV['HOST'].nil?
+      @preflight_check = true
+    end
+
+    # TODO: after unprototyping Preflight check, we should
+    # also include optional environment variables here
   end
 end
