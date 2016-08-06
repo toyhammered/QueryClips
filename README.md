@@ -66,6 +66,18 @@ All configuration is stored in environment variables. The following variables ar
 - `HOST`: Required. For example, `queryclips.com` or `localhost:3000`.
 - `MAIL_FROM_ADDRESS`: Optional. The default from address for email. Defaults to `noreply@queryclips.com`.
 
+### Mail
+
+The following environment variables are required in order to send mail:
+
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SENDGRID_USERNAME`
+- `SENDGRID_PASSWORD`
+- `SMTP_DOMAIN`
+
+We recommend using the [SendGrind](https://devcenter.heroku.com/articles/sendgrid) add-on if you're hosting QueryClip yourself on Heroku.
+
 # Dev Installation
 
 ## Requirements:

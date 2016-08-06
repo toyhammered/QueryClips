@@ -26,6 +26,18 @@ class ApplicationController < ActionController::Base
       @preflight_check = true
     end
 
+    smtp_vars = [
+      'SMTP_HOST',
+      'SMTP_PORT',
+      'SENDGRID_USERNAME',
+      'SENDGRID_PASSWORD',
+      'SMTP_DOMAIN'
+    ]
+    if smtp_vars.any? { |var| ENV[var].nil? }
+      @preflight_check = true
+      @preflight_check_smtp = true
+    end
+
     # TODO: after unprototyping Preflight check, we should
     # also include optional environment variables here
   end
