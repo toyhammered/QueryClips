@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-6">
+    <h2><%= @user.email %></h3>
+    <%- if @user.admin? %>
+      <span class="label label-primary">Admin</span>
+    <%- end %>
+    <p class="lead">Saved Queries</p>
+    <ul>
+      <%- @user.saved_queries.each do |sv| %>
+        <li>
+          <%= link_to sv.name, query_path(sv) %>
+        </li>
+      <%- end %>
+    </ul>
+  </div>
+</div>

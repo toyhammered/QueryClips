@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    find_user
+  end
+
   def new
     @user = User.new
   end
@@ -29,6 +33,13 @@ class UsersController < ApplicationController
   def admin_hook
     if User.count < 1
       @user.admin = true
+    end
+  end
+
+  def find_user
+    @user = User.find(params[:id])
+    if @user.nil?
+
     end
   end
 end

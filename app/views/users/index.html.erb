@@ -13,7 +13,7 @@
       </tr>
       <%- @users.each do |user| %>
         <tr>
-          <td><%= user.email %></td>
+          <td><%= link_to user.email, user_path(user) %></td>
           <td><%= time_ago_in_words(user.created_at) %></td>
           <td><%= user.admin?.to_s.capitalize %></td>
           <td><%= user.query_count %> query clips</td>
