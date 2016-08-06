@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :queries do
     get '/email', to: 'queries#email'
   end
-  resources :users, only: [:new, :create]
+  resources :users
 
   root 'landing#index'
 end

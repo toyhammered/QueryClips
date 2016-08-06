@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+  before_filter :authenticate!, except: [:new, :create]
+  
+  def index
+    @users = User.all
+  end
+
   def new
     @user = User.new
   end
