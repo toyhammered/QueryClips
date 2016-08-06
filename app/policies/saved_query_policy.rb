@@ -1,5 +1,8 @@
 class SavedQueryPolicy < ApplicationPolicy
   def read?
+    return true if @record.id.nil?
+    return true if @user.admin?
+    
     case @record.privacy
     when 'public'
       # accessible to all
@@ -14,6 +17,9 @@ class SavedQueryPolicy < ApplicationPolicy
   end
 
   def edit?
+    return true if @record.id.nil? # a new record
+    return true if @user.admin?
+    
     @record.user == @user
   end
 end

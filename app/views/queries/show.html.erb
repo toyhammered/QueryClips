@@ -3,7 +3,7 @@
 </div>
 <div class="row">
   <div class="pull-left">
-    <small>Created <%= time_ago_in_words(@saved_query.created_at) %> ago by <%= @saved_query.user.email %>.</small>
+    <small>Created <%= time_ago_in_words(@saved_query.created_at) %> ago by <%= link_to @saved_query.user.email, user_path(@saved_query.user) %>.</small>
     <div class="clearfix"></div>
     <small>Modified <%= time_ago_in_words(@saved_query.updated_at) %> ago.</small>
   </div>
