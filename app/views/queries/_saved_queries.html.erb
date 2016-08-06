@@ -9,11 +9,12 @@
     <tr>
       <td>
         <h4><%= link_to sq.name, query_path(sq) %></h4>
+        <span class="label label-info"><%= sq.privacy.capitalize %></span>
+        <div class="clearfix" />
         <small><%= sq.database_connection.name %></small>
       </td>
       <td>
-        <h5><%= sq.user.email %></h5>
-        <small><%= sq.privacy.capitalize %></small>
+        <%= link_to sq.user.email, user_path(sq.user) %>
       </td>
       <td><%= time_ago_in_words(sq.created_at) %> ago</td>
     </tr>
