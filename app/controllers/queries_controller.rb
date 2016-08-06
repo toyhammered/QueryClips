@@ -42,6 +42,17 @@ class QueriesController < ApplicationController
     end
   end
 
+  def email
+    @query_id = params[:query_id]
+    @saved_query = SavedQuery.friendly.find(@query_id)
+    authorize_show!
+    load_all_database_connections
+    if SavedQueries.simple(@saved_query, current_user.email).deliver
+      flash[:notice] = "Your email has been sent."
+      redirect_to query_path(@saved_query)
+    end
+  end
+
   def destroy
     find_query
     load_all_database_connections

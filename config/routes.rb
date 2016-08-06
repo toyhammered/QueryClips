@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   
   resources :database_connection
-  resources :queries
+  resources :queries do
+    get '/email', to: 'queries#email'
+  end
   resources :users, only: [:new, :create]
 
   root 'landing#index'
