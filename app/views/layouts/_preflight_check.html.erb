@@ -1,4 +1,5 @@
 <div class="preflight-check">
+
   <%- if DatabaseConnection.count < 1 %>
     <p class="alert alert-warning" role="alert">
       <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
@@ -15,5 +16,23 @@
         to add your first query clip.
       </p>
     <%- end %>    
+  <%- end %>
+
+  <%- if ENV['HOST'].nil? %>
+    <p class="alert alert-warning" role="alert">
+      <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+      You haven't configured a HOST environment variable. This will prevent certain features from functioning. Please see the
+      <%= link_to "README", "https://github.com/dpaola2/QueryClips", target: "_blank" %>
+      for more information.
+    </p>
+  <%- end %>
+  
+  <%- if @preflight_check_smtp %>
+    <p class="alert alert-warning" role="alert">
+      <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+      You haven't configured SMTP settings. This will prevent mail from being sent. Please see the
+      <%= link_to "README", "https://github.com/dpaola2/QueryClips", target: "_blank" %>
+      for more information.
+    <p>
   <%- end %>
 </div>

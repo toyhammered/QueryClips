@@ -1,0 +1,5 @@
+<h2><%= link_to @saved_query.name, query_url(@saved_query) %></h2>
+
+<%= render "queries/error_message" if @error %>
+<%= render "queries/results_table", result: @result if @result %>
+
