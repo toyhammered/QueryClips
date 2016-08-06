@@ -59,6 +59,13 @@ Then, whenever you want to update, you simply:
 2. `git push heroku master`
 3. `heroku run rake db:migrate`
 
+## Configuration
+
+All configuration is stored in environment variables. The following variables are used:
+
+- `HOST`: Required. For example, `queryclips.com` or `localhost:3000`.
+- `MAIL_FROM_ADDRESS`: Optional. The default from address for email. Defaults to `noreply@queryclips.com`.
+
 # Dev Installation
 
 ## Requirements:
