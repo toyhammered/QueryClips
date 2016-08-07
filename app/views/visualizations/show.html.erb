@@ -1,50 +1,24 @@
-<%= render "shared/error_messages", model: @visualization %>
+<div class="row">
+  <h1><%= link_to @visualization.name, visualization_path(@visualization) %></h1>
+</div>
 
 <div class="row">
-  <h2><%= @visualization.name %></h2>
-  <p>Visualizing <%= link_to @visualization.saved_query.name, query_path(@visualization.saved_query) %></p>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <div id="viz"></div>
-    </div>
-    <div class="panel-body">
-      <div id="viz-editor"><%= @visualization.code %></div>
-      <%= form_for(@visualization, url: visualization_path(@visualization), method: :patch) do |f| %>
-        <textarea name="code"><%= @visualization.code %></textarea>
-        <%= f.submit "Save & Run", class: "btn btn-primary" %>
-      <%- end %>
-      <div class="well">
-        <pre id="json-data"><%= @json_data %></pre>
-      </div>
-    </div>
-    <div class="panel-footer">
-      <%= link_to "HighCharts Docs", "http://api.highcharts.com/highcharts", target: "_blank" %>
-    </div>
+  <div class="pull-left">
+    <small>
+      Created <%= time_ago_in_words(@visualization.created_at) %> ago from
+      <%= link_to @visualization.saved_query.name, query_path(@visualization.saved_query) %>.
+    </small>
+    <div class="clearfix"></div>
+    <small>Modified <%= time_ago_in_words(@visualization.updated_at) %> ago.</small>
+  </div>
+  <div class="form-group form-inline pull-right">
+    Share: <input class="form-control" value="<%= visualization_url(@visualization) %>" readonly />
   </div>
 </div>
-<script type="text/javascript">
-  var vizEditor = ace.edit("viz-editor");
 
-  vizEditor.getSession().setMode("ace/mode/javascript");
-  vizEditor.getSession().setTabSize(2);
-  vizEditor.setOptions({
-    minLines: 10,
-    maxLines: Infinity,
-    showPrintMargin: false
-  });
 
-  var textArea = $('textarea[name="code"]').hide();
-  vizEditor.getSession().on('change', function() {
-    textArea.val(vizEditor.getSession().getValue());
-  });
 
-  var runViz = function() {
-    var jscode = vizEditor.getValue();
-    eval(jscode);
-    var jsonData = JSON.parse($("#json-data").html());
-    var highChartsConfig = generateHighCharts(jsonData);
-    $("#viz").highcharts(highChartsConfig);
-  }
-
-  runViz();
-</script>
+<div class="row">
+  <%= render "shared/error_messages", model: @visualization %>
+  <%= render "viz" %>
+</div>
