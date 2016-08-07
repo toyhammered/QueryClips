@@ -46,7 +46,7 @@ class VisualizationsController < ApplicationController
   end
   
   def find_visualization
-    @visualization = Visualization.find(params[:id])
+    @visualization = Visualization.friendly.find(params[:id])
     @saved_query = @visualization.saved_query
   end
 end
