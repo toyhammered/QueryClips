@@ -4,18 +4,28 @@
   <h2><%= @visualization.name %></h2>
   <p>Visualizing <%= link_to @visualization.saved_query.name, query_path(@visualization.saved_query) %></p>
   <div class="panel panel-default">
-    <div class="panel-heading">
+    <div class="panel-body">
       <div id="viz"></div>
     </div>
+  </div>
+  <a class="btn btn-primary btn-xs" role="button" data-toggle="collapse" href="#viz-controls" aria-expanded="false" aria-controls="viz-controls">Toggle Controls</a>
+  <div id="viz-controls" class="collapse panel panel-default">
     <div class="panel-body">
       <div id="viz-editor"><%= @visualization.code %></div>
       <%= form_for(@visualization, url: visualization_path(@visualization), method: :patch) do |f| %>
         <textarea name="code"><%= @visualization.code %></textarea>
         <%= f.submit "Save & Run", class: "btn btn-primary" %>
       <%- end %>
-      <div class="well">
-        <pre id="json-data"><%= @json_data %></pre>
-      </div>
+    </div>
+    <div class="panel-body">
+      <p class="lead">What is this?</p>
+      <p>Override the <code>generateHighCharts(jsonData, transformedData)</code> function above to return a valid HighCharts configuration object.</p>
+    </div>
+    <div class="panel-body">
+      <p>Standard JSON (<code>jsonData</code>)</p>
+      <pre id="json-data"><%= @json_data %></pre>
+      <p>Transformed JSON (<code>transformedData</code>)</p>
+      <pre id="json-data-transformed"></pre>
     </div>
     <div class="panel-footer">
       <%= link_to "HighCharts Docs", "http://api.highcharts.com/highcharts", target: "_blank" %>
@@ -38,11 +48,21 @@
     textArea.val(vizEditor.getSession().getValue());
   });
 
+  var jsonData = JSON.parse($("#json-data").html());
+  var transformedData = {};
+  var jsonLabels = Object.keys(jsonData[0]);
+
+  for (i = 0; i < jsonLabels.length; i++) {
+    var label = jsonLabels[i];
+    var data = jsonData.map(function(hash) { return hash[label]; });
+    transformedData[label] = data;
+  }
+
+  $("#json-data-transformed").html(JSON.stringify(transformedData));
   var runViz = function() {
     var jscode = vizEditor.getValue();
     eval(jscode);
-    var jsonData = JSON.parse($("#json-data").html());
-    var highChartsConfig = generateHighCharts(jsonData);
+    var highChartsConfig = generateHighCharts(jsonData, transformedData);
     $("#viz").highcharts(highChartsConfig);
   }
 
