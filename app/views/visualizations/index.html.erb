@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h2>Visualizations</h2>
+      <%= link_to "New Visualization", new_visualization_path, class: "btn btn-primary pull-right" %>
+    </div>
+    <table class="table">
+      <tr>
+        <th>Visualization</th>
+      </tr>
+      <%- @visualizations.each do |viz| %>
+        <tr>
+          <td><%= link_to viz.name, visualization_path(viz) %></td>
+        </tr>
+      <%- end %>
+    </table>
+  </div>
+</div>
