@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :database_connection
   resources :queries do
     get '/email', to: 'queries#email'
+    get '/toggle-daily-digest', to: 'queries#toggle_daily_digest'
   end
   resources :users
   resources :visualizations
