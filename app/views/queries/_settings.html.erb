@@ -4,10 +4,14 @@
   </button>
   <ul class="dropdown-menu">
     <li>
-      <a href="<%= database_connection_path(@saved_query.database_connection, anchor: 'tables') %>" target="_blank">
-        Schema Explorer
-        <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
-      </a>
+      <%= link_to "Schema Explorer", database_connection_path(@saved_query.database_connection, anchor: 'tables'), target: '_blank' %>
+    </li>
+    <li>
+      <%- if @saved_query.daily_digest %>
+        <%= link_to "Exclude from daily digest", query_toggle_daily_digest_path(@saved_query) %>
+      <%- else %>
+        <%= link_to "Include in daily digest", query_toggle_daily_digest_path(@saved_query) %>
+      <%- end %>
     </li>
     <li class="bg-danger">
       <%= link_to "Delete query", query_path(@saved_query), method: :delete, data: { confirm: 'Are you sure?' } %>
