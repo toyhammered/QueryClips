@@ -79,6 +79,12 @@ The following environment variables are required in order to send mail:
 
 We recommend using the [SendGrind](https://devcenter.heroku.com/articles/sendgrid) add-on if you're hosting QueryClip yourself on Heroku.
 
+### Daily Digest
+
+Using the Heroku Scheduler addon (`heroku addons:open scheduler`), schedule the rake task to run every day at 8am:
+
+![](https://www.dropbox.com/s/rtp3y5e2xsqq6av/Screenshot%202016-08-20%2012.42.25.png?dl=1)
+
 # Dev Installation
 
 ## Requirements:
