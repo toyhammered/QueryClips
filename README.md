@@ -112,8 +112,9 @@ Contributions are welcome! Please use pull requests.
 
 A great way to get started is to:
 
-1. Improve documentation
-2. Pick an issue marked as [help wanted](https://github.com/dpaola2/QueryClips/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22) and comment on the issue with your intention to contribute to it.
+1. Claim a task from the [Help Wanted](https://github.com/dpaola2/QueryClips/projects/1) project
+2. dig around in the code a bit and figure out how you’d go about solving the problem. Then comment on the github issue with your proposed plan of attack
+3. Implement it and pull request
 
 While we appreciate contributors, we will be sticking to our roadmap. Please talk to us before you begin coding so that we can confirm that your intended bugfix / feature / enhancement has a high likelihood of being accepted.
 
