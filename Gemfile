@@ -41,3 +41,7 @@ gem "better_errors", group: [:development]
 gem "binding_of_caller", group: [:development]
 gem "pry", group: [:development]
 gem "redcarpet"
+
+group :development, :teset do
+  gem 'rspec-rails', '~>3.5'
+end
